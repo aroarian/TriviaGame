@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   
+
     <!--Self CSS-->
     <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
@@ -15,12 +15,18 @@
 </head>
 
 <body>
+    <div class="container">
+        <div class="header">Star Wars Trivia</div>
+        <div class="difficulty"></div>
 
-    <div class="questions">
+        <div class="questions"></div>
 
+        <div class="results">
+            <div class="correct"></div>
+            <div class="wrong"></div>
+            <div onclick="difficulty()" class="reset">New Game</div>
+        </div>
     </div>
-    <div class="correct"></div>
-    <div class="wrong"></div>
     <!--JQuery CDN-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="./assets/javascript/app.js"></script>
