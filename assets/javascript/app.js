@@ -32,7 +32,9 @@ $(".reset").hide();
 $(".questions").hide();
 
 
-
+function reset (){
+    location.reload();
+}
 function endGame (){
     $(".questions").empty();
     $(".questions").height(0);
@@ -119,7 +121,7 @@ function apprentice(){
     
         if (index < easyQuestions.length){
             $(".questions").empty();
-            $(".questions").append(easyQuestions[index].question + "<br>")
+            $(".questions").append("<h1 class='question'>" + easyQuestions[index].question + "</h1> <br>")
             for(var i = 0; i < easyQuestions[index].options.length; i++){
                 $(".questions").append("<div class='options' info='"+ easyQuestions[index].options[i] +"'>" + easyQuestions[index].options[i] + "</div> <br>")
             }
