@@ -172,7 +172,7 @@ function knight(){
     
         if (index < mediumQuestions.length){
             $(".questions").empty();
-            $(".questions").append(mediumQuestions[index].question + "<br>")
+            $(".questions").append("<h1 class='question'>" + mediumQuestions[index].question + "</h1> <br>")
             for(var i = 0; i < mediumQuestions[index].options.length; i++){
                 $(".questions").append("<div class='options' info='"+ mediumQuestions[index].options[i] +"'>" + mediumQuestions[index].options[i] + "</div> <br>")
             }
@@ -223,7 +223,7 @@ function master(){
     
         if (index < hardQuestions.length){
             $(".questions").empty();
-            $(".questions").append(hardQuestions[index].question + "<br>")
+            $(".questions").append("<h1 class='question'>" + hardQuestions[index].question + "</h1> <br>")
             for(var i = 0; i < hardQuestions[index].options.length; i++){
                 $(".questions").append("<div class='options' info='"+ hardQuestions[index].options[i] +"'>" + hardQuestions[index].options[i] + "</div> <br>")
             }
@@ -274,7 +274,7 @@ function nerd(){
     
         if (index < nerdQuestions.length){
             $(".questions").empty();
-            $(".questions").append(nerdQuestions[index].question + "<br>")
+            $(".questions").append("<h1 class='question'>" + nerdQuestions[index].question + "</h1> <br>")
             for(var i = 0; i < nerdQuestions[index].options.length; i++){
                 $(".questions").append("<div class='options' info='"+ nerdQuestions[index].options[i] +"'>" + nerdQuestions[index].options[i] + "</div> <br>")
             }
