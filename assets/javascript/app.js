@@ -44,9 +44,11 @@ function getRandomPosition() {
 
 //Random Star Gen End =============================================================================================
 
-var index = 0
-var correct = 0
-var wrong = 0
+var timer = 11;
+var index = 0;
+var correct = 0;
+var wrong = 0;
+var intervalId;
 
 $(".correct").hide();
 $(".wrong").hide();
@@ -66,10 +68,18 @@ function endGame (){
     
 };
 
+function timeLeft(){
+    setInterval(decrement, 1000);
+    timer--
+    $(".timer").html("<h2>" + timer + "</h2>");
+}
+
 function difficulty(){
     $(".correct").hide();
     $(".wrong").hide();
     $(".reset").hide();
+    $(".timer").hide();
+    
 var difficultyLevel = ["Apprentice", "Knight", "Master", "Nerd"];
 
 
@@ -78,28 +88,28 @@ for(var i = 0; i < difficultyLevel.length; i++){
 }
 
 $("#Apprentice").on("click", function(){
-    $(".level").empty();
+    $(".level").hide();
     $(".difficulty").height(0);
      apprentice();
 
 });
 
 $("#Knight").on("click", function(){
-    $(".level").empty();
+    $(".level").hide();
     $(".difficulty").height(0);
      knight();
 
 });
 
 $("#Master").on("click", function(){
-    $(".level").empty();
+    $(".level").hide();
     $(".difficulty").height(0);
      master();
 
 });
 
 $("#Nerd").on("click", function(){
-    $(".level").empty();
+    $(".level").hide();
     $(".difficulty").height(0);
      nerd();
 
@@ -107,6 +117,14 @@ $("#Nerd").on("click", function(){
 
 function apprentice(){
     $(".questions").show();
+    $(".timer").show();
+
+    setInterval(function () {
+        timer--
+        $(".timer").html("<h2>" + timer + "</h2>");
+
+    }, 1000);
+
     var easyQuestions = [
         {
             question: "is the sun hot?",
@@ -124,7 +142,7 @@ function apprentice(){
     for(var i = 0; i < easyQuestions[index].options.length; i++){
         $(".questions").append("<div class='options' info='"+ easyQuestions[index].options[i] +"'>" + easyQuestions[index].options[i] + "</div> <br>")
     }
-    
+      
     //Looks at the document for all items with the class of options when you click on "this" item
     $(document).on("click", ".options", function(){
         var choosenOption = $(this).attr("info")
@@ -152,12 +170,21 @@ function apprentice(){
             console.log(index);
             endGame();
         }
+        
     });
-
+    
 }
 
 function knight(){
     $(".questions").show();
+    $(".timer").show();
+
+    setInterval(function () {
+        timer--
+        $(".timer").html("<h2>" + timer + "</h2>");
+
+    }, 1000);
+
     var mediumQuestions = [
         {
             question: "knight questions?",
@@ -209,6 +236,14 @@ function knight(){
 
 function master(){
     $(".questions").show();
+    $(".timer").show();
+
+    setInterval(function () {
+        timer--
+        $(".timer").html("<h2>" + timer + "</h2>");
+
+    }, 1000);
+
     var hardQuestions = [
         {
             question: "master questions?",
@@ -260,6 +295,14 @@ function master(){
 
 function nerd(){
     $(".questions").show();
+    $(".timer").show();
+
+    setInterval(function () {
+        timer--
+        $(".timer").html("<h2>" + timer + "</h2>");
+
+    }, 1000);
+
     var nerdQuestions = [
         {
             question: "nerd questions?",
