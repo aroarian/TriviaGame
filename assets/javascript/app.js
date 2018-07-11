@@ -20,7 +20,29 @@
 
 //timer
 
-    //if timer ends the game is complete and it checks to see what the user has answered.
+//Background Star Gen from https://dev.to/christopherkade/developing-the-star-wars-opening-crawl-in-htmlcss-2j9e 
+const numStars = 150;
+
+   
+for (let i = 0; i < numStars; i++) {
+    let star = document.createElement("div");  
+    star.className = "star";
+    var xy = getRandomPosition();
+    star.style.top = xy[0] + 'px';
+    star.style.left = xy[1] + 'px';
+    document.body.append(star);
+}
+    
+    
+function getRandomPosition() {  
+    var y = window.innerWidth;
+    var x = window.innerHeight;
+    var randomX = Math.floor(Math.random()*x);
+    var randomY = Math.floor(Math.random()*y);
+    return [randomX,randomY];
+}
+
+//Random Star Gen End =============================================================================================
 
 var index = 0
 var correct = 0
