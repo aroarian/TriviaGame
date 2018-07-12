@@ -25,9 +25,7 @@ body {
   font-size: 40px;
   text-align: center;
   margin-bottom: 35px;
-  /* font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
-  font-weight: bold; */
-}
+ }
 
 .questions {
   margin-left: auto;
@@ -38,9 +36,25 @@ body {
 }
 
 .question{
-  /* text-transform: uppercase; */
   font-size: 200%;
   margin: 0;
+}
+
+.correct{
+  margin-bottom: 15px;
+  color: rgb(75, 213, 238);
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 40px;
+  text-align: center;
+}
+
+.wrong{
+  color: rgb(75, 213, 238);
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 40px;
+  text-align: center;
 }
 
 .difficulty {
@@ -142,6 +156,26 @@ body {
 }
 
 .options:hover{
+  background: linear-gradient(rgba(5,47,77), rgb(2, 21, 34));
+    border: 2px solid #ffc107; 
+    color:#ffc107;
+}
+
+.reset{
+  margin-top: 35px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  background-color:rgba(5,47,77);
+  border: 1px solid rgba(5,47,77);
+  border-radius: 10px;
+  padding:15px;
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.reset:hover{
   background: linear-gradient(rgba(5,47,77), rgb(2, 21, 34));
     border: 2px solid #ffc107; 
     color:#ffc107;

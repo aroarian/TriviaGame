@@ -44,7 +44,7 @@ function getRandomPosition() {
 
 //Random Star Gen End =============================================================================================
 
-var timer = 11;
+var timer = 10;
 var index = 0;
 var correct = 0;
 var wrong = 0;
@@ -60,19 +60,11 @@ function reset (){
     location.reload();
 }
 function endGame (){
-    $(".questions").empty();
-    $(".questions").height(0);
+    $(".questions").empty().height(0);
     $(".reset").show();
-    $(".correct").show();
-    $(".wrong").show();
-    
+    $(".correct").show().html("Correct Answers: " + correct);
+    $(".wrong").show().html("Wrong Answers: " + wrong);
 };
-
-// function timeLeft(){
-//     setInterval(decrement, 1000);
-//     timer--
-//     $(".timer").html("<h2>" + timer + "</h2>");
-// }
 
 function difficulty(){
     $(".correct").hide();
@@ -90,7 +82,7 @@ for(var i = 0; i < difficultyLevel.length; i++){
 $("#Apprentice").on("click", function(){
     $(".level").hide();
     $(".difficulty").height(0);
-     apprentice();
+    apprentice();
 
 });
 
@@ -119,12 +111,6 @@ function apprentice(){
     $(".questions").show();
     $(".timer").show();
 
-    setInterval(function () {
-        timer--
-        $(".timer").html("<h2>" + timer + "</h2>");
-
-    }, 1000);
-
     var easyQuestions = [
         {
             question: "Is the sun hot?",
@@ -142,23 +128,50 @@ function apprentice(){
     for(var i = 0; i < easyQuestions[index].options.length; i++){
         $(".questions").append("<div class='options' info='"+ easyQuestions[index].options[i] +"'>" + easyQuestions[index].options[i] + "</div> <br>")
     }
-      
-    //Looks at the document for all items with the class of options when you click on "this" item
+
+    var timeLeft = setInterval(function () {
+        timer--
+        $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
+
+        if (timer == 0){
+            wrong++
+            index++
+            timer = 10;
+            $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
+
+            if (index < easyQuestions.length){
+                $(".questions").empty();
+                $(".questions").append("<h1 class='question'>" + easyQuestions[index].question + "</h1> <br>")
+                for(var i = 0; i < easyQuestions[index].options.length; i++){
+                    $(".questions").append("<div class='options' info='"+ easyQuestions[index].options[i] +"'>" + easyQuestions[index].options[i] + "</div> <br>")
+                }
+            }
+           else {
+            $(".timer").hide();
+            $(".counter").empty().height(0);
+            clearInterval(timeLeft);
+            endGame();
+                
+            }
+        }
+    }, 1000);    
+   //Looks at the document for all items with the class of options when you click on "this" item
     $(document).on("click", ".options", function(){
         var choosenOption = $(this).attr("info")
         if (choosenOption == easyQuestions[index].answer){
             alert("You're Right!");
             correct++
-            $(".correct").html("Correct Answer:" + correct)
+            $(".correct").html("Correct Answers: " + correct)
         }
         else {
             alert("You're Wrong");
             wrong++
-            $(".wrong").html("Wrong Answers:" + wrong)
+            $(".wrong").html("Wrong Answers: " + wrong)
         }
         
-        index++
-    
+        timer = 11;
+        index++;
+
         if (index < easyQuestions.length){
             $(".questions").empty();
             $(".questions").append("<h1 class='question'>" + easyQuestions[index].question + "</h1> <br>")
@@ -167,10 +180,13 @@ function apprentice(){
             }
         }
        else {
-            console.log(index);
-            endGame();
+           $(".timer").hide();
+           $(".counter").hide().height(0);
+           clearInterval(timeLeft);
+           endGame();
+            
         }
-        
+            
     });
     
 }
@@ -179,20 +195,14 @@ function knight(){
     $(".questions").show();
     $(".timer").show();
 
-    setInterval(function () {
-        timer--
-        $(".timer").html("<h2>" + timer + "</h2>");
-
-    }, 1000);
-
     var mediumQuestions = [
         {
-            question: "knight questions?",
+            question: "Knight the sun hot?",
             options: ["yes", "no", "maybe"],
             answer: "yes"
         },
         {
-            question: "is snow cold?",
+            question: "Knight is snow cold?",
             options: ["maybe", "no", "yes"],
             answer: "yes"
         }
@@ -202,23 +212,50 @@ function knight(){
     for(var i = 0; i < mediumQuestions[index].options.length; i++){
         $(".questions").append("<div class='options' info='"+ mediumQuestions[index].options[i] +"'>" + mediumQuestions[index].options[i] + "</div> <br>")
     }
-    
-    //Looks at the document for all items with the class of options when you click on "this" item
+
+    var timeLeft = setInterval(function () {
+        timer--
+        $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
+
+        if (timer == 0){
+            wrong++
+            index++
+            timer = 10;
+            $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
+
+            if (index < mediumQuestions.length){
+                $(".questions").empty();
+                $(".questions").append("<h1 class='question'>" + mediumQuestions[index].question + "</h1> <br>")
+                for(var i = 0; i < mediumQuestions[index].options.length; i++){
+                    $(".questions").append("<div class='options' info='"+ mediumQuestions[index].options[i] +"'>" + mediumQuestions[index].options[i] + "</div> <br>")
+                }
+            }
+           else {
+            $(".timer").hide();
+            $(".counter").empty().height(0);
+            clearInterval(timeLeft);
+            endGame();
+                
+            }
+        }
+    }, 1000);    
+   //Looks at the document for all items with the class of options when you click on "this" item
     $(document).on("click", ".options", function(){
         var choosenOption = $(this).attr("info")
         if (choosenOption == mediumQuestions[index].answer){
             alert("You're Right!");
             correct++
-            $(".correct").html("Correct Answer:" + correct)
+            $(".correct").html("Correct Answers: " + correct)
         }
         else {
             alert("You're Wrong");
             wrong++
-            $(".wrong").html("Wrong Answers:" + wrong)
+            $(".wrong").html("Wrong Answers: " + wrong)
         }
         
-        index++
-    
+        timer = 11;
+        index++;
+
         if (index < mediumQuestions.length){
             $(".questions").empty();
             $(".questions").append("<h1 class='question'>" + mediumQuestions[index].question + "</h1> <br>")
@@ -227,31 +264,29 @@ function knight(){
             }
         }
        else {
-            console.log(index);
-            endGame();
+           $(".counter").hide().height(0);
+           $(".timer").hide();
+           clearInterval(timeLeft);
+           endGame();
+            
         }
+            
     });
-
+    
 }
 
 function master(){
     $(".questions").show();
     $(".timer").show();
 
-    setInterval(function () {
-        timer--
-        $(".timer").html("<h2>" + timer + "</h2>");
-
-    }, 1000);
-
     var hardQuestions = [
         {
-            question: "master questions?",
+            question: "Master the sun hot?",
             options: ["yes", "no", "maybe"],
             answer: "yes"
         },
         {
-            question: "is snow cold?",
+            question: "Master is snow cold?",
             options: ["maybe", "no", "yes"],
             answer: "yes"
         }
@@ -261,23 +296,50 @@ function master(){
     for(var i = 0; i < hardQuestions[index].options.length; i++){
         $(".questions").append("<div class='options' info='"+ hardQuestions[index].options[i] +"'>" + hardQuestions[index].options[i] + "</div> <br>")
     }
-    
-    //Looks at the document for all items with the class of options when you click on "this" item
+
+    var timeLeft = setInterval(function () {
+        timer--
+        $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
+
+        if (timer == 0){
+            wrong++
+            index++
+            timer = 10;
+            $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
+
+            if (index < hardQuestions.length){
+                $(".questions").empty();
+                $(".questions").append("<h1 class='question'>" + hardQuestions[index].question + "</h1> <br>")
+                for(var i = 0; i < hardQuestions[index].options.length; i++){
+                    $(".questions").append("<div class='options' info='"+ hardQuestions[index].options[i] +"'>" + hardQuestions[index].options[i] + "</div> <br>")
+                }
+            }
+           else {
+            $(".timer").hide();
+            $(".counter").empty().height(0);
+            clearInterval(timeLeft);
+            endGame();
+                
+            }
+        }
+    }, 1000);    
+   //Looks at the document for all items with the class of options when you click on "this" item
     $(document).on("click", ".options", function(){
         var choosenOption = $(this).attr("info")
         if (choosenOption == hardQuestions[index].answer){
             alert("You're Right!");
             correct++
-            $(".correct").html("Correct Answer:" + correct)
+            $(".correct").html("Correct Answers: " + correct)
         }
         else {
             alert("You're Wrong");
             wrong++
-            $(".wrong").html("Wrong Answers:" + wrong)
+            $(".wrong").html("Wrong Answers: " + wrong)
         }
         
-        index++
-    
+        timer = 11;
+        index++;
+
         if (index < hardQuestions.length){
             $(".questions").empty();
             $(".questions").append("<h1 class='question'>" + hardQuestions[index].question + "</h1> <br>")
@@ -286,31 +348,29 @@ function master(){
             }
         }
        else {
-            console.log(index);
-            endGame();
+           $(".counter").hide().height(0);
+           $(".timer").hide();
+           clearInterval(timeLeft);
+           endGame();
+            
         }
+            
     });
-
+    
 }
 
 function nerd(){
     $(".questions").show();
     $(".timer").show();
 
-    setInterval(function () {
-        timer--
-        $(".timer").html("<h2>" + timer + "</h2>");
-
-    }, 1000);
-
     var nerdQuestions = [
         {
-            question: "nerd questions?",
+            question: "Nerd the sun hot?",
             options: ["yes", "no", "maybe"],
             answer: "yes"
         },
         {
-            question: "is snow cold?",
+            question: "Nerd is snow cold?",
             options: ["maybe", "no", "yes"],
             answer: "yes"
         }
@@ -320,23 +380,50 @@ function nerd(){
     for(var i = 0; i < nerdQuestions[index].options.length; i++){
         $(".questions").append("<div class='options' info='"+ nerdQuestions[index].options[i] +"'>" + nerdQuestions[index].options[i] + "</div> <br>")
     }
-    
-    //Looks at the document for all items with the class of options when you click on "this" item
+
+    var timeLeft = setInterval(function () {
+        timer--
+        $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
+
+        if (timer == 0){
+            wrong++
+            index++
+            timer = 10;
+            $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
+
+            if (index < nerdQuestions.length){
+                $(".questions").empty();
+                $(".questions").append("<h1 class='question'>" + nerdQuestions[index].question + "</h1> <br>")
+                for(var i = 0; i < nerdQuestions[index].options.length; i++){
+                    $(".questions").append("<div class='options' info='"+ nerdQuestions[index].options[i] +"'>" + nerdQuestions[index].options[i] + "</div> <br>")
+                }
+            }
+           else {
+            $(".timer").hide();
+            $(".counter").empty().height(0);
+            clearInterval(timeLeft);
+            endGame();
+                
+            }
+        }
+    }, 1000);    
+   //Looks at the document for all items with the class of options when you click on "this" item
     $(document).on("click", ".options", function(){
         var choosenOption = $(this).attr("info")
         if (choosenOption == nerdQuestions[index].answer){
             alert("You're Right!");
             correct++
-            $(".correct").html("Correct Answer:" + correct)
+            $(".correct").html("Correct Answers: " + correct)
         }
         else {
             alert("You're Wrong");
             wrong++
-            $(".wrong").html("Wrong Answers:" + wrong)
+            $(".wrong").html("Wrong Answers: " + wrong)
         }
         
-        index++
-    
+        timer = 11;
+        index++;
+
         if (index < nerdQuestions.length){
             $(".questions").empty();
             $(".questions").append("<h1 class='question'>" + nerdQuestions[index].question + "</h1> <br>")
@@ -345,19 +432,18 @@ function nerd(){
             }
         }
        else {
-            console.log(index);
-            endGame();
+           $(".counter").hide().height(0);
+           $(".timer").hide();
+           clearInterval(timeLeft);
+           endGame();
+            
         }
+            
     });
-
+    
 }
 
 }
-
-
-
-
-
 
 difficulty();
 
