@@ -68,11 +68,11 @@ function endGame (){
     
 };
 
-function timeLeft(){
-    setInterval(decrement, 1000);
-    timer--
-    $(".timer").html("<h2>" + timer + "</h2>");
-}
+// function timeLeft(){
+//     setInterval(decrement, 1000);
+//     timer--
+//     $(".timer").html("<h2>" + timer + "</h2>");
+// }
 
 function difficulty(){
     $(".correct").hide();
@@ -127,7 +127,7 @@ function apprentice(){
 
     var easyQuestions = [
         {
-            question: "is the sun hot?",
+            question: "Is the sun hot?",
             options: ["yes", "no", "maybe"],
             answer: "yes"
         },
