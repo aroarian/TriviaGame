@@ -60,6 +60,11 @@ $(".wrong").hide();
 $(".reset").hide();
 $(".questions").hide();
 
+var hover = new Audio();
+hover.src = "./assets/sounds/hover.wav"
+$(".reset").mouseenter(function(){
+hover.play();
+});
 
 function reset (){
     location.reload();
@@ -83,14 +88,20 @@ var difficultyLevel = ["Apprentice", "Knight", "Master", "Nerd"];
 
 for(var i = 0; i < difficultyLevel.length; i++){
     $(".difficulty").append("<div class='level' id='"+ difficultyLevel[i] +"'>" + difficultyLevel[i] + "</div> <br>")
+    
 }
+
+var hover = new Audio();
+    hover.src = "./assets/sounds/hover.wav"
+    $(".level").mouseenter(function(){
+     hover.play();
+    });
+
 
 $("#Apprentice").on("click", function(){
     var click = new Audio();
     click.src = "./assets/sounds/Music.mp3"
-    click.play();
-    var click = new Audio();
-    click.src = "./assets/sounds/Music.mp3"
+    click.loop = true;
     click.play();
     $(".level").hide();
     $(".difficulty").height(0);
@@ -101,6 +112,7 @@ $("#Apprentice").on("click", function(){
 $("#Knight").on("click", function(){
     var click = new Audio();
     click.src = "./assets/sounds/Music.mp3"
+    click.loop = true;
     click.play();
     $(".level").hide();
     $(".difficulty").height(0);
@@ -111,6 +123,7 @@ $("#Knight").on("click", function(){
 $("#Master").on("click", function(){
     var click = new Audio();
     click.src = "./assets/sounds/Music.mp3"
+    click.loop = true;
     click.play();
     $(".level").hide();
     $(".difficulty").height(0);
@@ -121,6 +134,7 @@ $("#Master").on("click", function(){
 $("#Nerd").on("click", function(){
     var click = new Audio();
     click.src = "./assets/sounds/Music.mp3"
+    click.loop = true;
     click.play();
     $(".level").hide();
     $(".difficulty").height(0);
@@ -134,14 +148,34 @@ function apprentice(){
 
     var easyQuestions = [
         {
-            question: "Is the sun hot?",
-            options: ["yes", "no", "maybe"],
-            answer: "yes"
+            question: "Worst Star Wars movie?",
+            options: ["The Phantom Menace", "The Last Jedi", "Solo", "Attack of the Clones"],
+            answer: "The Last Jedi"
         },
         {
-            question: "is snow cold?",
-            options: ["maybe", "no", "yes"],
-            answer: "yes"
+            question: "Who was Luke's father?",
+            options: ["Palpatine", "Obi-Wan", "Anakin", "The Force"],
+            answer: "Anakin"
+        },
+        {
+            question: "Never tell me the ____.",
+            options: ["Chances", "Odds", "Differences"],
+            answer: "Odds"
+        },
+        {
+            question: "Darth Vader's Lightsaber color?",
+            options: ["Blue", "Red", "Green", "Yellow"],
+            answer: "Red"
+        },
+        {
+            question: "Who shot first?",
+            options: ["Han-Solo", "Greedo"],
+            answer: "Han-Solo"
+        },
+        {
+            question: "What type of ship was Han's",
+            options: ["X-Wing", "H-Type Nubian", "T-16", "YT-1300"],
+            answer: "YT-1300"
         }
     ]
     $(".questions").append("<h1 class='question'>" + easyQuestions[index].question + "</h1> <br>")
@@ -149,6 +183,12 @@ function apprentice(){
     for(var i = 0; i < easyQuestions[index].options.length; i++){
         $(".questions").append("<div class='options' info='"+ easyQuestions[index].options[i] +"'>" + easyQuestions[index].options[i] + "</div> <br>")
     }
+
+    var hover = new Audio();
+    hover.src = "./assets/sounds/hover.wav"
+    $(".options").mouseenter(function(){
+     hover.play();
+    });
 
     var timeLeft = setInterval(function () {
         timer--
@@ -174,42 +214,54 @@ function apprentice(){
             endGame();
                 
             }
+            var hover = new Audio();
+             hover.src = "./assets/sounds/hover.wav"
+             $(".options").mouseenter(function(){
+            hover.play();
+    });
         }
     }, 1000);    
    //Looks at the document for all items with the class of options when you click on "this" item
     $(document).on("click", ".options", function(){
         var choosenOption = $(this).attr("info")
         if (choosenOption == easyQuestions[index].answer){
-            alert("You're Right!");
+            $(this).css({background:"linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"})
+            $(this).css({border:"2px solid rgb(30, 170, 72)"});
             correct++
-            $(".correct").html("Correct Answers: " + correct)
+            
+            
         }
         else {
-            alert("You're Wrong");
+            $(this).css({background:"linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"})
+            $(this).css({border:"2px solid rgb(226, 20, 20)"});
             wrong++
-            $(".wrong").html("Wrong Answers: " + wrong)
-        }
-        
-        timer = 11;
-        index++;
-
-        if (index < easyQuestions.length){
-            $(".questions").empty();
-            $(".questions").append("<h1 class='question'>" + easyQuestions[index].question + "</h1> <br>")
-            for(var i = 0; i < easyQuestions[index].options.length; i++){
-                $(".questions").append("<div class='options' info='"+ easyQuestions[index].options[i] +"'>" + easyQuestions[index].options[i] + "</div> <br>")
-            }
-        }
-       else {
-           $(".timer").hide();
-           $(".counter").hide().height(0);
-           clearInterval(timeLeft);
-           endGame();
             
         }
-            
-    });
+        setTimeout(function(){
+            timer = 11;
+            index++;
     
+            if (index < easyQuestions.length){
+                $(".questions").empty();
+                $(".questions").append("<h1 class='question'>" + easyQuestions[index].question + "</h1> <br>")
+                for(var i = 0; i < easyQuestions[index].options.length; i++){
+                    $(".questions").append("<div class='options' info='"+ easyQuestions[index].options[i] +"'>" + easyQuestions[index].options[i] + "</div> <br>")
+                }
+            }
+
+            else {
+               $(".timer").hide();
+               $(".counter").hide().height(0);
+               clearInterval(timeLeft);
+               endGame();
+            } 
+            var hover = new Audio();
+             hover.src = "./assets/sounds/hover.wav"
+             $(".options").mouseenter(function(){
+             hover.play();
+    });  
+        }, 1000);
+    });
 }
 
 function knight(){
@@ -261,19 +313,22 @@ function knight(){
         }
     }, 1000);    
    //Looks at the document for all items with the class of options when you click on "this" item
-    $(document).on("click", ".options", function(){
-        var choosenOption = $(this).attr("info")
-        if (choosenOption == mediumQuestions[index].answer){
-            alert("You're Right!");
-            correct++
-            $(".correct").html("Correct Answers: " + correct)
-        }
-        else {
-            alert("You're Wrong");
-            wrong++
-            $(".wrong").html("Wrong Answers: " + wrong)
-        }
+   $(document).on("click", ".options", function(){
+    var choosenOption = $(this).attr("info")
+    if (choosenOption == mediumQuestions[index].answer){
+        $(this).css({background:"linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"})
+        $(this).css({border:"2px solid rgb(30, 170, 72)"});
+        correct++
         
+        
+    }
+    else {
+        $(this).css({background:"linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"})
+        $(this).css({border:"2px solid rgb(226, 20, 20)"});
+        wrong++
+        
+    }
+    setTimeout(function(){
         timer = 11;
         index++;
 
@@ -284,16 +339,16 @@ function knight(){
                 $(".questions").append("<div class='options' info='"+ mediumQuestions[index].options[i] +"'>" + mediumQuestions[index].options[i] + "</div> <br>")
             }
         }
-       else {
-           $(".counter").hide().height(0);
+
+        else {
            $(".timer").hide();
+           $(".counter").hide().height(0);
            clearInterval(timeLeft);
            endGame();
-            
-        }
-            
-    });
-    
+        }   
+    }, 1000);
+});
+
 }
 
 function master(){
@@ -345,19 +400,22 @@ function master(){
         }
     }, 1000);    
    //Looks at the document for all items with the class of options when you click on "this" item
-    $(document).on("click", ".options", function(){
-        var choosenOption = $(this).attr("info")
-        if (choosenOption == hardQuestions[index].answer){
-            alert("You're Right!");
-            correct++
-            $(".correct").html("Correct Answers: " + correct)
-        }
-        else {
-            alert("You're Wrong");
-            wrong++
-            $(".wrong").html("Wrong Answers: " + wrong)
-        }
+   $(document).on("click", ".options", function(){
+    var choosenOption = $(this).attr("info")
+    if (choosenOption == hardQuestions[index].answer){
+        $(this).css({background:"linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"})
+        $(this).css({border:"2px solid rgb(30, 170, 72)"});
+        correct++
         
+        
+    }
+    else {
+        $(this).css({background:"linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"})
+        $(this).css({border:"2px solid rgb(226, 20, 20)"});
+        wrong++
+        
+    }
+    setTimeout(function(){
         timer = 11;
         index++;
 
@@ -368,15 +426,15 @@ function master(){
                 $(".questions").append("<div class='options' info='"+ hardQuestions[index].options[i] +"'>" + hardQuestions[index].options[i] + "</div> <br>")
             }
         }
-       else {
-           $(".counter").hide().height(0);
+
+        else {
            $(".timer").hide();
+           $(".counter").hide().height(0);
            clearInterval(timeLeft);
            endGame();
-            
-        }
-            
-    });
+        }   
+    }, 1000);
+});
     
 }
 
@@ -429,19 +487,22 @@ function nerd(){
         }
     }, 1000);    
    //Looks at the document for all items with the class of options when you click on "this" item
-    $(document).on("click", ".options", function(){
-        var choosenOption = $(this).attr("info")
-        if (choosenOption == nerdQuestions[index].answer){
-            alert("You're Right!");
-            correct++
-            $(".correct").html("Correct Answers: " + correct)
-        }
-        else {
-            alert("You're Wrong");
-            wrong++
-            $(".wrong").html("Wrong Answers: " + wrong)
-        }
+   $(document).on("click", ".options", function(){
+    var choosenOption = $(this).attr("info")
+    if (choosenOption == nerdQuestions[index].answer){
+        $(this).css({background:"linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"})
+        $(this).css({border:"2px solid rgb(30, 170, 72)"});
+        correct++
         
+        
+    }
+    else {
+        $(this).css({background:"linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"})
+        $(this).css({border:"2px solid rgb(226, 20, 20)"});
+        wrong++
+        
+    }
+    setTimeout(function(){
         timer = 11;
         index++;
 
@@ -452,15 +513,15 @@ function nerd(){
                 $(".questions").append("<div class='options' info='"+ nerdQuestions[index].options[i] +"'>" + nerdQuestions[index].options[i] + "</div> <br>")
             }
         }
-       else {
-           $(".counter").hide().height(0);
+
+        else {
            $(".timer").hide();
+           $(".counter").hide().height(0);
            clearInterval(timeLeft);
            endGame();
-            
-        }
-            
-    });
+        }   
+    }, 1000);
+});
     
 }
 
