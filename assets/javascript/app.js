@@ -163,7 +163,7 @@ function apprentice(){
         {
             question: "Who was frozen in carbonite?",
             options: ["Luke Skywalker", "Princess Leia", "Han Solo"],
-            answer: "Han Sol"
+            answer: "Han Solo"
         },
         {
             question: "What was Jabba's species?",
