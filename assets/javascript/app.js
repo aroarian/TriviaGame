@@ -20,6 +20,11 @@
 
 //timer
 
+
+// $(document).ready(function() {
+//     $("#music").get(0).play();
+// });
+
 //Background Star Gen from https://dev.to/christopherkade/developing-the-star-wars-opening-crawl-in-htmlcss-2j9e 
 const numStars = 150;
 
@@ -67,6 +72,7 @@ function endGame (){
 };
 
 function difficulty(){
+         
     $(".correct").hide();
     $(".wrong").hide();
     $(".reset").hide();
@@ -80,13 +86,22 @@ for(var i = 0; i < difficultyLevel.length; i++){
 }
 
 $("#Apprentice").on("click", function(){
+    var click = new Audio();
+    click.src = "./assets/sounds/Music.mp3"
+    click.play();
+    var click = new Audio();
+    click.src = "./assets/sounds/Music.mp3"
+    click.play();
     $(".level").hide();
     $(".difficulty").height(0);
-    apprentice();
+     apprentice();
 
 });
 
 $("#Knight").on("click", function(){
+    var click = new Audio();
+    click.src = "./assets/sounds/Music.mp3"
+    click.play();
     $(".level").hide();
     $(".difficulty").height(0);
      knight();
@@ -94,6 +109,9 @@ $("#Knight").on("click", function(){
 });
 
 $("#Master").on("click", function(){
+    var click = new Audio();
+    click.src = "./assets/sounds/Music.mp3"
+    click.play();
     $(".level").hide();
     $(".difficulty").height(0);
      master();
@@ -101,6 +119,9 @@ $("#Master").on("click", function(){
 });
 
 $("#Nerd").on("click", function(){
+    var click = new Audio();
+    click.src = "./assets/sounds/Music.mp3"
+    click.play();
     $(".level").hide();
     $(".difficulty").height(0);
      nerd();
@@ -446,4 +467,4 @@ function nerd(){
 }
 
 difficulty();
-
+music(); 
