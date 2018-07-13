@@ -228,6 +228,7 @@ function apprentice(){
             $(this).css({background:"linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"})
             $(this).css({border:"2px solid rgb(30, 170, 72)"});
             correct++
+            timer = 11;
             
             
         }
@@ -235,9 +236,12 @@ function apprentice(){
             $(this).css({background:"linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"})
             $(this).css({border:"2px solid rgb(226, 20, 20)"});
             wrong++
+            timer = 11;
+            
             
         }
         setTimeout(function(){
+         
             timer = 11;
             index++;
     
@@ -270,12 +274,12 @@ function knight(){
 
     var mediumQuestions = [
         {
-            question: "Knight the sun hot?",
-            options: ["yes", "no", "maybe"],
-            answer: "yes"
+            question: '"Feel, Dont think. Trust your instincts."',
+            options: ["Obi-Wan", "Shmi Skywalker", "Qui-Gon Jinn", "Padme"],
+            answer: "Qui-Gon Jinn"
         },
         {
-            question: "Knight is snow cold?",
+            question: '"I will be Chancellor"',
             options: ["maybe", "no", "yes"],
             answer: "yes"
         }
@@ -285,6 +289,12 @@ function knight(){
     for(var i = 0; i < mediumQuestions[index].options.length; i++){
         $(".questions").append("<div class='options' info='"+ mediumQuestions[index].options[i] +"'>" + mediumQuestions[index].options[i] + "</div> <br>")
     }
+
+    var hover = new Audio();
+    hover.src = "./assets/sounds/hover.wav"
+    $(".options").mouseenter(function(){
+     hover.play();
+    });
 
     var timeLeft = setInterval(function () {
         timer--
@@ -308,8 +318,13 @@ function knight(){
             $(".counter").empty().height(0);
             clearInterval(timeLeft);
             endGame();
-                
+            
             }
+            var hover = new Audio();
+            hover.src = "./assets/sounds/hover.wav"
+            $(".options").mouseenter(function(){
+             hover.play();
+            });
         }
     }, 1000);    
    //Looks at the document for all items with the class of options when you click on "this" item
@@ -319,6 +334,7 @@ function knight(){
         $(this).css({background:"linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"})
         $(this).css({border:"2px solid rgb(30, 170, 72)"});
         correct++
+        timer = 11;
         
         
     }
@@ -326,6 +342,7 @@ function knight(){
         $(this).css({background:"linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"})
         $(this).css({border:"2px solid rgb(226, 20, 20)"});
         wrong++
+        timer = 11;
         
     }
     setTimeout(function(){
@@ -345,7 +362,12 @@ function knight(){
            $(".counter").hide().height(0);
            clearInterval(timeLeft);
            endGame();
-        }   
+        } 
+        var hover = new Audio();
+        hover.src = "./assets/sounds/hover.wav"
+        $(".options").mouseenter(function(){
+         hover.play();
+        }); 
     }, 1000);
 });
 
@@ -373,6 +395,12 @@ function master(){
         $(".questions").append("<div class='options' info='"+ hardQuestions[index].options[i] +"'>" + hardQuestions[index].options[i] + "</div> <br>")
     }
 
+    var hover = new Audio();
+    hover.src = "./assets/sounds/hover.wav"
+    $(".options").mouseenter(function(){
+     hover.play();
+    }); 
+
     var timeLeft = setInterval(function () {
         timer--
         $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
@@ -397,6 +425,11 @@ function master(){
             endGame();
                 
             }
+            var hover = new Audio();
+            hover.src = "./assets/sounds/hover.wav"
+            $(".options").mouseenter(function(){
+             hover.play();
+            }); 
         }
     }, 1000);    
    //Looks at the document for all items with the class of options when you click on "this" item
@@ -406,14 +439,14 @@ function master(){
         $(this).css({background:"linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"})
         $(this).css({border:"2px solid rgb(30, 170, 72)"});
         correct++
-        
+        timer = 11;
         
     }
     else {
         $(this).css({background:"linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"})
         $(this).css({border:"2px solid rgb(226, 20, 20)"});
         wrong++
-        
+        timer = 11;
     }
     setTimeout(function(){
         timer = 11;
@@ -432,7 +465,12 @@ function master(){
            $(".counter").hide().height(0);
            clearInterval(timeLeft);
            endGame();
-        }   
+        }  
+        var hover = new Audio();
+        hover.src = "./assets/sounds/hover.wav"
+        $(".options").mouseenter(function(){
+         hover.play();
+        });  
     }, 1000);
 });
     
@@ -460,6 +498,12 @@ function nerd(){
         $(".questions").append("<div class='options' info='"+ nerdQuestions[index].options[i] +"'>" + nerdQuestions[index].options[i] + "</div> <br>")
     }
 
+    var hover = new Audio();
+    hover.src = "./assets/sounds/hover.wav"
+    $(".options").mouseenter(function(){
+     hover.play();
+    }); 
+
     var timeLeft = setInterval(function () {
         timer--
         $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
@@ -484,6 +528,11 @@ function nerd(){
             endGame();
                 
             }
+            var hover = new Audio();
+            hover.src = "./assets/sounds/hover.wav"
+            $(".options").mouseenter(function(){
+             hover.play();
+            }); 
         }
     }, 1000);    
    //Looks at the document for all items with the class of options when you click on "this" item
@@ -493,14 +542,14 @@ function nerd(){
         $(this).css({background:"linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"})
         $(this).css({border:"2px solid rgb(30, 170, 72)"});
         correct++
-        
+        timer = 11;
         
     }
     else {
         $(this).css({background:"linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"})
         $(this).css({border:"2px solid rgb(226, 20, 20)"});
         wrong++
-        
+        timer = 11;
     }
     setTimeout(function(){
         timer = 11;
@@ -519,7 +568,12 @@ function nerd(){
            $(".counter").hide().height(0);
            clearInterval(timeLeft);
            endGame();
-        }   
+        }  
+        var hover = new Audio();
+        hover.src = "./assets/sounds/hover.wav"
+        $(".options").mouseenter(function(){
+         hover.play();
+        });  
     }, 1000);
 });
     
