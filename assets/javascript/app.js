@@ -1,30 +1,3 @@
-//Questions: array of objects
-
-    //each object should have the question, the options will be an array to choose from and the correct answer
-
-    //var index of 0 to access the first questions, the first options and the first correct answer
-
-
-//click on event to compare to the correct answer
-
-    //if answer is correct. increment a variable (correct answers)
-
-    //if incorrect. will increment incorrect answers.
-
-    //increment the index so that we can display the next question options and have access to the correct answer
-
-    //check to see if you have made it to the last question and display results
-
-    //get totals and display results
-
-
-//timer
-
-
-// $(document).ready(function() {
-//     $("#music").get(0).play();
-// });
-
 //Background Star Gen from https://dev.to/christopherkade/developing-the-star-wars-opening-crawl-in-htmlcss-2j9e 
 const numStars = 150;
 
@@ -37,7 +10,7 @@ for (let i = 0; i < numStars; i++) {
     star.style.left = xy[1] + 'px';
     document.body.append(star);
 }
-    
+  
     
 function getRandomPosition() {  
     var y = window.innerWidth;
@@ -158,7 +131,7 @@ function apprentice(){
             answer: "Anakin"
         },
         {
-            question: "Never tell me the ____.",
+            question: '"Never tell me the ____."',
             options: ["Chances", "Odds", "Differences"],
             answer: "Odds"
         },
@@ -169,13 +142,33 @@ function apprentice(){
         },
         {
             question: "Who shot first?",
-            options: ["Han-Solo", "Greedo"],
-            answer: "Han-Solo"
+            options: ["Han Solo", "Greedo"],
+            answer: "Han Solo"
         },
         {
-            question: "What type of ship was Han's",
-            options: ["X-Wing", "H-Type Nubian", "T-16", "YT-1300"],
-            answer: "YT-1300"
+            question: '"I love you. ________."',
+            options: ["I love you too", "I know", "Same", "Ditto"],
+            answer: "I know"
+        },
+        {
+            question: "What color was Obi-Wan's Lightsaber?",
+            options: ["Red", "Yellow", "Green", "Blue"],
+            answer: "Blue"
+        },
+        {
+            question: "Who enslaved Princess Leia?",
+            options: ["Yoda", "Bobba Fett", "IG-88", "Jabba the Hutt"],
+            answer: "Jabba the Hutt"
+        },
+        {
+            question: "Who was frozen in carbonite?",
+            options: ["Luke Skywalker", "Princess Leia", "Han Solo"],
+            answer: "Han Sol"
+        },
+        {
+            question: "What was Jabba's species?",
+            options: ["Charon", "Xexto", "Hutt", "Squib"],
+            answer: "Hutt"
         }
     ]
     $(".questions").append("<h1 class='question'>" + easyQuestions[index].question + "</h1> <br>")
@@ -280,8 +273,48 @@ function knight(){
         },
         {
             question: '"I will be Chancellor"',
-            options: ["maybe", "no", "yes"],
-            answer: "yes"
+            options: ["Queen Amidala", "Senator Teem", "Senator Palpatine", "Senator Antilles"],
+            answer: "Senator Palpatine"
+        },
+        {
+            question: "Who was Yoda's apprentice?",
+            options: ["Obi-Wan", "Qui-Gon Jinn", "Po Nudu", "Count Dooku"],
+            answer: "Count Dooku"
+        },
+        {
+            question: "What was Obi-Wan's name on Tatooine?",
+            options: ["Ken", "Ben", "Obi", "Wan"],
+            answer: "Ben"
+        },
+        {
+            question: "How many suns did Tatooine have?",
+            options: ["Six", "Three", "One", "Two"],
+            answer: "Two"
+        },
+        {
+            question: "Who had a Death Sentence on 12 systems?",
+            options: ["Jabba the Hut", "Han Solo", "Dr. Evazan", "Ponda Baba"],
+            answer: "Dr. Evazan"
+        },
+        {
+            question: "What species was Greedo?",
+            options: ["Dug", "Transdoshan", "Rodian", "Hutt"],
+            answer: "Rodian"
+        },
+        {
+            question: "What was Chewbacca's weapon called?",
+            options: ["Blaster Rifle", "Bowcaster", "Blaster Pistol", "Ion Blaster"],
+            answer: "Bowcaster"
+        },
+        {
+            question: '"Its a trap!"',
+            options: ["Luke Skywalker", "Princess Leia", "Admiral Ackbar", "Grand Moff Tarkin"],
+            answer: "Admiral Ackbar"
+        },
+        {
+            question: "How many moons does Hoth have?",
+            options: ["Six", "Three", "Nine", "None"],
+            answer: "Three"
         }
     ]
     $(".questions").append("<h1 class='question'>" + mediumQuestions[index].question + "</h1> <br>")
@@ -379,14 +412,64 @@ function master(){
 
     var hardQuestions = [
         {
-            question: "Master the sun hot?",
-            options: ["yes", "no", "maybe"],
-            answer: "yes"
+            question: "Who was Red Three?",
+            options: ["Biggs Darklighter", "Wedge Antilles", "Luke Skywalker", "Jek Porkins"],
+            answer: "Biggs Darklighter"
         },
         {
-            question: "Master is snow cold?",
-            options: ["maybe", "no", "yes"],
-            answer: "yes"
+            question: "What was Yoda's species?",
+            options: ["Unknown", "Trilith", "Yolor", "Yangral"],
+            answer: "Unknown"
+        },
+        {
+            question: "Where is an AT-AT most vulnerable?",
+            options: ["It's sensor array", "It's neck", "It's drive motor", "An escape hatch"],
+            answer: "All Terrain Armored Transport"
+        },
+        {
+            question: "How many nostrils do Tauntauns have?",
+            options: ["Two", "Four", "Six", "One"],
+            answer: "Four"
+        },
+        {
+            question: "How many people can a AT-ST hold?",
+            options: ["Two", "Six", "Three", "Four"],
+            answer: "Two"
+        },,
+        {
+            question: "Which planet is below Cloud City?",
+            options: ["Couscant", "Dagobah", "Hoth", "Besbin"],
+            answer: "Besbin"
+        },
+        {
+            question: "Who fixed the hyperdrive on the Falcon?",
+            options: ["C-3PO", "R2-D2", "Chewbacca", "Lando"],
+            answer: "R2-D2"
+        },
+        {
+            question: "What does AT-AT stand for?",
+            options: ["All Terrain Armored Transport", "All Terrain Assault Titan", "All Terrain Assault Tank", "All Terrain Armored Tyrant"],
+            answer: "All Terrain Armored Transport"
+        },
+        {
+            question: "What were fear, anger and aggression to Yoda?",
+            options: ["Fun", "The Jedi way", "The dark side", "Luke's next lesson"],
+            answer: "The dark side"
+        },
+        {
+            question: "How many forms of communication does C-3PO know?",
+            options: ["Over 9000", "5 Million", "1 Million", "6 Million"],
+            answer: "6 Million"
+        },
+        {
+            question: "What was Watto's favorite passtime?",
+            options: ["Singing", "Gambling", "Bargaining", "Trading"],
+            answer: "Gambling"
+        },
+        {
+            question: "What model of ship was Han's?",
+            options: ["X-Wing", "H-Type Nubian", "T-16", "YT-1300"],
+            answer: "YT-1300"
         }
     ]
     $(".questions").append("<h1 class='question'>" + hardQuestions[index].question + "</h1> <br>")
@@ -482,14 +565,59 @@ function nerd(){
 
     var nerdQuestions = [
         {
-            question: "Nerd the sun hot?",
-            options: ["yes", "no", "maybe"],
-            answer: "yes"
+            question: "In Cloud City, what platform was Slave I docked?",
+            options: ["North", "West", "East", "South"],
+            answer: "East"
         },
         {
-            question: "Nerd is snow cold?",
-            options: ["maybe", "no", "yes"],
-            answer: "yes"
+            question: "What planet did Darth Maul die on?",
+            options: ["Naboo", "Tatooine", "Dantooine", "Yavin 4"],
+            answer: "Tatooine"
+        },
+        {
+            question: "How old was Mace Windu during the Battle of Naboo?",
+            options: ["Thirty-Eight", "Forty", "Fifty", "Forty-Eight"],
+            answer: "Forty"
+        },
+        {
+            question: "What was Darth Maul's species?",
+            options: ["Human", "Irdonian Zabrak", "Nemoidian", "Rodian"],
+            answer: "Irdonian Zabrak"
+        },
+        {
+            question: "What type of armor did Jango Fett wear?",
+            options: ["Mandalay", "Mondolary", "Mandaloovian", "Mandalorian"],
+            answer: "Mandalorian"
+        },
+        {
+            question: "What model of blaster did clone troopers use?",
+            options: ["CD-1334", "DC-270", "DC-15", "CD-1408"],
+            answer: "DC-15"
+        },
+        {
+            question: "What clone trooper was in Return of the Jedi?",
+            options: ["Rex", "Fives", "Echo", "Cody"],
+            answer: "Rex"
+        },
+        {
+            question: "What Jedi did Palpatine kill first?",
+            options: ["Agen Kolar", "Kit Fisto", "Saesse Tiin", "Mace Windu"],
+            answer: "Agen Kolar"
+        },
+        {
+            question: "What was Jabba the Hutt's homeworld?",
+            options: ["Da Soocha V", "Tatooine", "Nal Hutta", "Nar Shaddaa"],
+            answer: "Nal Hutta"
+        },
+        {
+            question: "What was Luke's rank on Hoth?",
+            options: ["General", "Captain", "Lieutenant", "Commander"],
+            answer: "Commander"
+        },
+        {
+            question: "What planet do Rancors come from?",
+            options: ["Dathomir", "Dantooine", "Tatooine", "Yavin 4"],
+            answer: "Dathomir"
         }
     ]
     $(".questions").append("<h1 class='question'>" + nerdQuestions[index].question + "</h1> <br>")
