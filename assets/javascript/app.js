@@ -127,8 +127,8 @@ function apprentice(){
         },
         {
             question: "Who was Luke's father?",
-            options: ["Palpatine", "Obi-Wan", "Anakin", "The Force"],
-            answer: "Anakin"
+            options: ["Palpatine", "Obi-Wan", "Anakin Skywalker", "The Force"],
+            answer: "Anakin Skywalker"
         },
         {
             question: '"Never tell me the ____."',
@@ -267,12 +267,12 @@ function knight(){
 
     var mediumQuestions = [
         {
-            question: '"Feel, Dont think. Trust your instincts."',
+            question: '"Feel, Don\'t think. Trust your instincts."',
             options: ["Obi-Wan", "Shmi Skywalker", "Qui-Gon Jinn", "Padme"],
             answer: "Qui-Gon Jinn"
         },
         {
-            question: '"I will be Chancellor"',
+            question: '"I will be Chancellor."',
             options: ["Queen Amidala", "Senator Teem", "Senator Palpatine", "Senator Antilles"],
             answer: "Senator Palpatine"
         },
@@ -302,7 +302,7 @@ function knight(){
             answer: "Rodian"
         },
         {
-            question: "What was Chewbacca's weapon called?",
+            question: "What type of weapon did Chewbacca's use?",
             options: ["Blaster Rifle", "Bowcaster", "Blaster Pistol", "Ion Blaster"],
             answer: "Bowcaster"
         },
