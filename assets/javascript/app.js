@@ -256,9 +256,7 @@
           } 
           else {
             $(".timer").hide();
-            $(".counter")
-              .hide()
-              .height(0);
+            $(".counter").hide().height(0);
             clearInterval(timeLeft);
             endGame();
           }
