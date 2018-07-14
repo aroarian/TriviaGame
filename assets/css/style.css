@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  width: 100%;
+  height: auto;
   background-color: black;
 }
 
@@ -11,15 +13,12 @@ body {
   
 }
 
-audio{
-  display:none;
-}
 .container {
-  margin-left: auto;
-  margin-right: auto;
-  width: 960px;
-  height: 600px;
-  border: 1px solid black;
+  /* margin-left: auto;
+  margin-right: auto; */
+  width: 100%;
+  /* max-width:960px; */
+  height: auto;
   color: #ffc107;
   background-color: black;
 }
@@ -65,7 +64,8 @@ audio{
   text-transform: uppercase;
   margin-left: auto;
   margin-right: auto;
-  width: 400px;
+  max-width: 400px;
+  width: 90%;
   height: 150px;
   text-align: center;
   font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
@@ -151,6 +151,7 @@ audio{
 .options{
   background-color:rgba(5,47,77);
   border: 1px solid rgba(5,47,77);
+  width: 90%;
   border-radius: 10px;
   padding:15px;
   font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;

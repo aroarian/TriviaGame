@@ -118,6 +118,7 @@ $("#Nerd").on("click", function(){
 function apprentice(){
     $(".questions").show();
     $(".timer").show();
+    index = 0
 
     var easyQuestions = [
         {
@@ -264,6 +265,7 @@ function apprentice(){
 function knight(){
     $(".questions").show();
     $(".timer").show();
+    index = 0
 
     var mediumQuestions = [
         {
@@ -409,6 +411,7 @@ function knight(){
 function master(){
     $(".questions").show();
     $(".timer").show();
+    index = 0
 
     var hardQuestions = [
         {
@@ -435,7 +438,7 @@ function master(){
             question: "How many people can a AT-ST hold?",
             options: ["Two", "Six", "Three", "Four"],
             answer: "Two"
-        },,
+        },
         {
             question: "Which planet is below Cloud City?",
             options: ["Couscant", "Dagobah", "Hoth", "Besbin"],
@@ -564,6 +567,7 @@ function master(){
 function nerd(){
     $(".questions").show();
     $(".timer").show();
+    index = 0
 
     var nerdQuestions = [
         {
@@ -712,4 +716,4 @@ function nerd(){
 }
 
 difficulty();
-music(); 
+
