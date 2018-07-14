@@ -1,33 +1,23 @@
 body {
-  margin: 0;
   width: 100%;
   height: auto;
   background-color: black;
-}
-
-.star {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  background-color: white;
-  
+  background-image: url("../images/background.jpg");
 }
 
 .container {
-  /* margin-left: auto;
-  margin-right: auto; */
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
-  /* max-width:960px; */
   height: auto;
   color: #ffc107;
-  background-color: black;
 }
 
 .header {
   font-size: 40px;
   text-align: center;
   margin-bottom: 35px;
- }
+}
 
 .questions {
   margin-left: auto;
@@ -37,12 +27,12 @@ body {
   text-align: center;
 }
 
-.question{
+.question {
   font-size: 200%;
   margin: 0;
 }
 
-.correct{
+.correct {
   margin-bottom: 15px;
   color: rgb(75, 213, 238);
   margin-left: auto;
@@ -51,7 +41,7 @@ body {
   text-align: center;
 }
 
-.wrong{
+.wrong {
   color: rgb(75, 213, 238);
   margin-left: auto;
   margin-right: auto;
@@ -70,67 +60,67 @@ body {
   text-align: center;
   font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
   font-weight: bold;
-  /* transform: perspective(300px) rotateX(25deg);
-  transform-origin: 50% 100%; */
-  /* overflow: hidden;
-  font-size: 200%; */
 }
 
-#Apprentice{
-    background-color:rgba(5,47,77);
-    border: 1px solid rgba(5,47,77);
-    border-radius: 10px;
-    padding:15px;
-}
-#Knight{
-    background-color:rgba(5,47,77); 
-    padding:15px;
-    border: 1px solid rgba(5,47,77);
-    border-radius: 10px;
-}
-#Master{
-    background-color:rgba(5,47,77);
-    padding:15px ;
-    border: 1px solid rgba(5,47,77);
-    border-radius: 10px;
-}
-#Nerd{
-    background-color:rgba(5,47,77); 
-    padding:15px;
-    border: 1px solid rgba(5,47,77);
-    border-radius: 10px;
+#Apprentice {
+  background-color: rgba(5, 47, 77);
+  border: 1px solid rgba(5, 47, 77);
+  border-radius: 10px;
+  padding: 15px;
 }
 
-#Apprentice:hover{
-    background: linear-gradient(rgba(5,47,77), rgb(2, 21, 34));
-    border: 2px solid #ffc107;
-    color:#ffc107;
+#Knight {
+  background-color: rgba(5, 47, 77);
+  padding: 15px;
+  border: 1px solid rgba(5, 47, 77);
+  border-radius: 10px;
 }
 
-#Knight:hover{
-    background: linear-gradient(rgba(5,47,77), rgb(2, 21, 34));
-    border: 2px solid #ffc107; 
-    color:#ffc107;
+#Master {
+  background-color: rgba(5, 47, 77);
+  padding: 15px;
+  border: 1px solid rgba(5, 47, 77);
+  border-radius: 10px;
 }
 
-#Master:hover{
-    background: linear-gradient(rgba(5,47,77), rgb(2, 21, 34));
-    border: 2px solid #ffc107;
-    color:#ffc107; 
+#Nerd {
+  background-color: rgba(5, 47, 77);
+  padding: 15px;
+  border: 1px solid rgba(5, 47, 77);
+  border-radius: 10px;
 }
 
-#Nerd:hover{
-    background: linear-gradient(rgba(5,47,77), rgb(2, 21, 34));
-    border: 2px solid #ffc107; 
-    color:#ffc107;  
+#Apprentice:hover {
+  background: linear-gradient(rgba(5, 47, 77), rgb(2, 21, 34));
+  border: 2px solid #ffc107;
+  color: #ffc107;
 }
 
-.timer{
-  color:rgb(75, 213, 238);
+#Knight:hover {
+  background: linear-gradient(rgba(5, 47, 77), rgb(2, 21, 34));
+  border: 2px solid #ffc107;
+  color: #ffc107;
+}
+
+#Master:hover {
+  background: linear-gradient(rgba(5, 47, 77), rgb(2, 21, 34));
+  border: 2px solid #ffc107;
+  color: #ffc107;
+}
+
+#Nerd:hover {
+  background: linear-gradient(rgba(5, 47, 77), rgb(2, 21, 34));
+  border: 2px solid #ffc107;
+  color: #ffc107;
+}
+
+.timer {
+  color: rgb(75, 213, 238);
   text-align: center;
   font-size: 200%;
   margin-bottom: 20px;
 }
+
 .results {
   text-align: center;
   color: #ffc107;
@@ -148,39 +138,39 @@ body {
   margin-right: auto;
 }
 
-.options{
-  background-color:rgba(5,47,77);
-  border: 1px solid rgba(5,47,77);
+.options {
+  background-color: rgba(5, 47, 77);
+  border: 1px solid rgba(5, 47, 77);
   width: 90%;
   border-radius: 10px;
-  padding:15px;
+  padding: 15px;
   font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-.options:hover{
-  background: linear-gradient(rgba(5,47,77), rgb(2, 21, 34));
-    border: 2px solid #ffc107; 
-    color:#ffc107;
+.options:hover {
+  background: linear-gradient(rgba(5, 47, 77), rgb(2, 21, 34));
+  border: 2px solid #ffc107;
+  color: #ffc107;
 }
 
-.reset{
+.reset {
   margin-top: 35px;
   margin-left: auto;
   margin-right: auto;
   width: 300px;
-  background-color:rgba(5,47,77);
-  border: 1px solid rgba(5,47,77);
+  background-color: rgba(5, 47, 77);
+  border: 1px solid rgba(5, 47, 77);
   border-radius: 10px;
-  padding:15px;
+  padding: 15px;
   font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-.reset:hover{
-  background: linear-gradient(rgba(5,47,77), rgb(2, 21, 34));
-    border: 2px solid #ffc107; 
-    color:#ffc107;
+.reset:hover {
+  background: linear-gradient(rgba(5, 47, 77), rgb(2, 21, 34));
+  border: 2px solid #ffc107;
+  color: #ffc107;
 }
