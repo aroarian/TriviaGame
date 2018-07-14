@@ -474,7 +474,7 @@ function master(){
     ]
     $(".questions").append("<h1 class='question'>" + hardQuestions[index].question + "</h1> <br>")
     
-    for(var i = 0; i < hardQuestions[index].options.length; i++){
+    for(var i = 0; i < mediumQuestions[index].options.length; i++){
         $(".questions").append("<div class='options' info='"+ hardQuestions[index].options[i] +"'>" + hardQuestions[index].options[i] + "</div> <br>")
     }
 
@@ -482,7 +482,7 @@ function master(){
     hover.src = "./assets/sounds/hover.wav"
     $(".options").mouseenter(function(){
      hover.play();
-    }); 
+    });
 
     var timeLeft = setInterval(function () {
         timer--
@@ -506,13 +506,13 @@ function master(){
             $(".counter").empty().height(0);
             clearInterval(timeLeft);
             endGame();
-                
+            
             }
             var hover = new Audio();
             hover.src = "./assets/sounds/hover.wav"
             $(".options").mouseenter(function(){
              hover.play();
-            }); 
+            });
         }
     }, 1000);    
    //Looks at the document for all items with the class of options when you click on "this" item
@@ -524,12 +524,14 @@ function master(){
         correct++
         timer = 11;
         
+        
     }
     else {
         $(this).css({background:"linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"})
         $(this).css({border:"2px solid rgb(226, 20, 20)"});
         wrong++
         timer = 11;
+        
     }
     setTimeout(function(){
         timer = 11;
@@ -548,12 +550,12 @@ function master(){
            $(".counter").hide().height(0);
            clearInterval(timeLeft);
            endGame();
-        }  
+        } 
         var hover = new Audio();
         hover.src = "./assets/sounds/hover.wav"
         $(".options").mouseenter(function(){
          hover.play();
-        });  
+        }); 
     }, 1000);
 });
     
