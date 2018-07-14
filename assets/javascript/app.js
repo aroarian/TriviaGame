@@ -179,7 +179,7 @@
           index++;
           timer = 10;
           $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
-
+      
           if (index < easyQuestions.length) {
             $(".questions").empty();
             $(".questions").append(
