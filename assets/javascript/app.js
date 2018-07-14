@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+
 //Global Variables ======================================================================================
   var timer = 10;
   var index = 0;
@@ -10,6 +11,7 @@ $( document ).ready(function() {
   $(".reset").hide();
   $(".questions").hide();
 
+  //Reset Functions =======================================================================================
   $(".reset").on("click", function(){
     difficulty();
   })
@@ -21,16 +23,11 @@ $( document ).ready(function() {
     hover.play();
   });
 
-//Reset Functions =======================================================================================
-  // function reset() {
-  //   difficulty();
-  // };
-  
+//Game End ============================================================================================= 
   function endGame() {
-    $(".questions")
-      .empty()
-      .height(0);
-      $(".results").show();
+    $(".questions").empty().height(0);
+    $(".current").empty()
+    $(".results").show();
     $(".reset").show();
     $(".difficulty").empty();
     $(".correct").show().html("Correct Answers: " + correct);
@@ -103,7 +100,9 @@ $( document ).ready(function() {
 //Difficulty functions and questions ============================================================================
     function apprentice() {
       $(".questions").show();
+      $(".current").show();
       $(".timer").show();
+      timer = 10;
       index = 0;
         
       var easyQuestions = [
@@ -160,7 +159,7 @@ $( document ).ready(function() {
       ];
 
       //Display Question and Options ================================================================
-      $(".questions").append("<h1 class='question'>" + easyQuestions[index].question + "</h1> <br>");
+      $(".current").append("<h1 class='question'>" + easyQuestions[index].question + "</h1> <br>");
 
       for (var i = 0; i < easyQuestions[index].options.length; i++) {
         $(".questions").append(
@@ -178,45 +177,43 @@ $( document ).ready(function() {
       var timeLeft = setInterval(function() {
         timer--;
         $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
-
+        
         if (timer == 0) {
+          timer++;
           wrong++;
-          index++;
-          timer = 10;
-          $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
-
-         console.log(easyQuestions[index].answer)
-      
-          if (index < easyQuestions.length) {
+          $(".timer").hide();
+          $(".questions").empty();
+          $(".questions").append("<div class='options answer'>" + easyQuestions[index].answer  + "</div>")
+          timer = 12
+          setTimeout(function() {
+            index++;
+            $(".current").empty();
             $(".questions").empty();
-            $(".questions").append(
-              "<h1 class='question'>" +
-                easyQuestions[index].question +
-                "</h1> <br>"
-            );
-            for (var i = 0; i < easyQuestions[index].options.length; i++) {
-              $(".questions").append(
-                "<div class='options' info='" +
-                  easyQuestions[index].options[i] +
-                  "'>" +
-                  easyQuestions[index].options[i] +
-                  "</div> <br>"
-              );
+            timer--;
+            timer = 11;
+            if (index < easyQuestions.length) {
+            $(".timer").show();
+              $(".current").append("<h1 class='question'>" + easyQuestions[index].question + "</h1> <br>");
+              for (var i = 0; i < easyQuestions[index].options.length; i++) {
+                $(".questions").append(
+                  "<div class='options' info='" +
+                    easyQuestions[index].options[i] +
+                    "'>" +
+                    easyQuestions[index].options[i] +
+                    "</div> <br>");
+              }
+            } 
+            else {
+              $(".timer").hide();
+              clearInterval(timeLeft);
+              endGame();
             }
-          } 
-          else {
-            $(".timer").hide();
-            $(".counter")
-              .empty()
-              .height(0);
-            clearInterval(timeLeft);
-            endGame();
-          }
-          var hover = new Audio();
-          hover.src = "./assets/sounds/hover.wav";
-          $(".options").mouseenter(function() {
-            hover.play();
-          });
+            var hover = new Audio();
+            hover.src = "./assets/sounds/hover.wav";
+            $(".options").mouseenter(function() {
+              hover.play();
+            });
+          },2000);
         }
       }, 1000);
       
@@ -229,24 +226,36 @@ $( document ).ready(function() {
           });
           $(this).css({ border: "2px solid rgb(30, 170, 72)" });
           correct++;
-          timer = 11;
-        } else {
+          $(".timer").hide();
+          timer = 14;
+        } 
+        else {
           $(this).css({
             background: "linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"
           });
           $(this).css({ border: "2px solid rgb(226, 20, 20)" });
           wrong++;
-          timer = 11;
+          $(".timer").hide();
+          
+          setTimeout(function() {
+            timer = 12;
+            // $(".timer").hide();
+            $(".questions").empty();
+            $(".questions").append("<div class='options answer'>" + easyQuestions[index].answer  + "</div>")
+  
+          }, 2000);
         }
-
+       
         //Delay switching to next question after selecting an option =====================================
         setTimeout(function() {
-          timer = 11;
+          timer = 10;
+          $(".timer").show();
           index++;
 
           if (index < easyQuestions.length) {
+            $(".current").empty();
             $(".questions").empty();
-            $(".questions").append(
+            $(".current").append(
               "<h1 class='question'>" +
                 easyQuestions[index].question +
                 "</h1> <br>"
@@ -263,7 +272,6 @@ $( document ).ready(function() {
           } 
           else {
             $(".timer").hide();
-            $(".counter").hide().height(0);
             clearInterval(timeLeft);
             endGame();
           }
@@ -272,14 +280,16 @@ $( document ).ready(function() {
           $(".options").mouseenter(function() {
             hover.play();
           });
-        }, 1000);
+        }, 4000);
       });
     }
 
     function knight() {
       $(".questions").show();
+      $(".current").show();
       $(".timer").show();
       index = 0;
+      timer = 10;
 
       var mediumQuestions = [
         {
@@ -334,7 +344,7 @@ $( document ).ready(function() {
         }
       ];
 
-      $(".questions").append("<h1 class='question'>" + mediumQuestions[index].question + "</h1> <br>");
+      $(".current").append("<h1 class='question'>" + mediumQuestions[index].question + "</h1> <br>");
 
       for (var i = 0; i < mediumQuestions[index].options.length; i++) {
         $(".questions").append(
@@ -355,46 +365,50 @@ $( document ).ready(function() {
       var timeLeft = setInterval(function() {
         timer--;
         $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
-
+        
         if (timer == 0) {
+          timer++;
           wrong++;
-          index++;
-          timer = 10;
-          $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
-
-          if (index < mediumQuestions.length) {
+          $(".timer").hide();
+          $(".questions").empty();
+          $(".questions").append("<div class='options answer'>" + mediumQuestions[index].answer  + "</div>")
+          timer = 12
+          setTimeout(function() {
+            index++;
+            $(".current").empty();
             $(".questions").empty();
-            $(".questions").append(
-              "<h1 class='question'>" +
-                mediumQuestions[index].question +
-                "</h1> <br>"
-            );
-            for (var i = 0; i < mediumQuestions[index].options.length; i++) {
-              $(".questions").append(
-                "<div class='options' info='" +
+            timer--;
+            timer = 11;
+            if (index < mediumQuestions.length) {
+            $(".timer").show();
+              $(".current").append("<h1 class='question'>" + mediumQuestions[index].question + "</h1> <br>");
+              for (var i = 0; i < mediumQuestions[index].options.length; i++) {
+                $(".questions").append(
+                  "<div class='options' info='" +
                   mediumQuestions[index].options[i] +
-                  "'>" +
-                  mediumQuestions[index].options[i] +
-                  "</div> <br>"
-              );
+                    "'>" +
+                    mediumQuestions[index].options[i] +
+                    "</div> <br>");
+              }
+            } 
+            else {
+              $(".timer").hide();
+              $(".counter")
+                .empty()
+                .height(0);
+              clearInterval(timeLeft);
+              endGame();
             }
-          } 
-          else {
-            $(".timer").hide();
-            $(".counter")
-              .empty()
-              .height(0);
-            clearInterval(timeLeft);
-            endGame();
-          }
-          var hover = new Audio();
-          hover.src = "./assets/sounds/hover.wav";
-          $(".options").mouseenter(function() {
-            hover.play();
-          });
+            var hover = new Audio();
+            hover.src = "./assets/sounds/hover.wav";
+            $(".options").mouseenter(function() {
+              hover.play();
+            });
+          },2000);
         }
       }, 1000);
       
+      //Option on click correct/wrong logic ================================================================
       $(document).on("click", ".options", function() {
         var choosenOption = $(this).attr("info");
         if (choosenOption == mediumQuestions[index].answer) {
@@ -403,30 +417,44 @@ $( document ).ready(function() {
           });
           $(this).css({ border: "2px solid rgb(30, 170, 72)" });
           correct++;
-          timer = 11;
+          $(".timer").hide();
+          timer = 14;
         } 
         else {
-          $(this).css({background: "linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"});
-          $(this).css({border: "2px solid rgb(226, 20, 20)"});
+          $(this).css({
+            background: "linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"
+          });
+          $(this).css({ border: "2px solid rgb(226, 20, 20)" });
           wrong++;
-          timer = 11;
+          $(".timer").hide();
+          
+          setTimeout(function() {
+            timer = 12;
+            // $(".timer").hide();
+            $(".questions").empty();
+            $(".questions").append("<div class='options answer'>" + mediumQuestions[index].answer  + "</div>")
+  
+          }, 2000);
         }
-
+       
+        //Delay switching to next question after selecting an option =====================================
         setTimeout(function() {
-          timer = 11;
+          timer = 10;
+          $(".timer").show();
           index++;
 
           if (index < mediumQuestions.length) {
+            $(".current").empty();
             $(".questions").empty();
-            $(".questions").append(
+            $(".current").append(
               "<h1 class='question'>" +
-                mediumQuestions[index].question +
+              mediumQuestions[index].question +
                 "</h1> <br>"
             );
             for (var i = 0; i < mediumQuestions[index].options.length; i++) {
               $(".questions").append(
                 "<div class='options' info='" +
-                  mediumQuestions[index].options[i] +
+                mediumQuestions[index].options[i] +
                   "'>" +
                   mediumQuestions[index].options[i] +
                   "</div> <br>"
@@ -435,9 +463,7 @@ $( document ).ready(function() {
           } 
           else {
             $(".timer").hide();
-            $(".counter")
-              .hide()
-              .height(0);
+            $(".counter").hide().height(0);
             clearInterval(timeLeft);
             endGame();
           }
@@ -446,14 +472,16 @@ $( document ).ready(function() {
           $(".options").mouseenter(function() {
             hover.play();
           });
-        }, 1000);
+        }, 4000);
       });
     };
 
     function master() {
       $(".questions").show();
+      $(".current").show();
       $(".timer").show();
       index = 0;
+      timer = 10;
 
       var hardQuestions = [
         {
@@ -468,8 +496,8 @@ $( document ).ready(function() {
         },
         {
           question: "Where is an AT-AT most vulnerable?",
-          options: ["It's sensor array","It's neck","It's drive motor","An escape hatch"],
-          answer: "All Terrain Armored Transport"
+          options: ["It's sensor array","The neck","It's drive motor","An escape hatch"],
+          answer: "The neck"
         },
         {
           question: "How many nostrils do Tauntauns have?",
@@ -521,12 +549,12 @@ $( document ).ready(function() {
         }
       ];
 
-      $(".questions").append("<h1 class='question'>" + hardQuestions[index].question + "</h1> <br>");
+      $(".current").append("<h1 class='question'>" + hardQuestions[index].question + "</h1> <br>");
 
       for (var i = 0; i < hardQuestions[index].options.length; i++) {
         $(".questions").append(
           "<div class='options' info='" +
-            hardQuestions[index].options[i] +
+          hardQuestions[index].options[i] +
             "'>" +
             hardQuestions[index].options[i] +
             "</div> <br>"
@@ -542,46 +570,50 @@ $( document ).ready(function() {
       var timeLeft = setInterval(function() {
         timer--;
         $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
-
+        
         if (timer == 0) {
+          timer++;
           wrong++;
-          index++;
-          timer = 10;
-          $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
-
-          if (index < hardQuestions.length) {
+          $(".timer").hide();
+          $(".questions").empty();
+          $(".questions").append("<div class='options answer'>" + hardQuestions[index].answer  + "</div>")
+          timer = 12
+          setTimeout(function() {
+            index++;
+            $(".current").empty();
             $(".questions").empty();
-            $(".questions").append(
-              "<h1 class='question'>" +
-                hardQuestions[index].question +
-                "</h1> <br>"
-            );
-            for (var i = 0; i < hardQuestions[index].options.length; i++) {
-              $(".questions").append(
-                "<div class='options' info='" +
+            timer--;
+            timer = 11;
+            if (index < hardQuestions.length) {
+            $(".timer").show();
+              $(".current").append("<h1 class='question'>" + hardQuestions[index].question + "</h1> <br>");
+              for (var i = 0; i < hardQuestions[index].options.length; i++) {
+                $(".questions").append(
+                  "<div class='options' info='" +
                   hardQuestions[index].options[i] +
-                  "'>" +
-                  hardQuestions[index].options[i] +
-                  "</div> <br>"
-              );
+                    "'>" +
+                    hardQuestions[index].options[i] +
+                    "</div> <br>");
+              }
+            } 
+            else {
+              $(".timer").hide();
+              $(".counter")
+                .empty()
+                .height(0);
+              clearInterval(timeLeft);
+              endGame();
             }
-          } 
-          else {
-            $(".timer").hide();
-            $(".counter")
-              .empty()
-              .height(0);
-            clearInterval(timeLeft);
-            endGame();
-          }
-          var hover = new Audio();
-          hover.src = "./assets/sounds/hover.wav";
-          $(".options").mouseenter(function() {
-            hover.play();
-          });
+            var hover = new Audio();
+            hover.src = "./assets/sounds/hover.wav";
+            $(".options").mouseenter(function() {
+              hover.play();
+            });
+          },2000);
         }
       }, 1000);
       
+      //Option on click correct/wrong logic ================================================================
       $(document).on("click", ".options", function() {
         var choosenOption = $(this).attr("info");
         if (choosenOption == hardQuestions[index].answer) {
@@ -590,29 +622,44 @@ $( document ).ready(function() {
           });
           $(this).css({ border: "2px solid rgb(30, 170, 72)" });
           correct++;
-          timer = 11;
+          $(".timer").hide();
+          timer = 14;
         } 
         else {
-          $(this).css({background: "linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"});
-          $(this).css({border: "2px solid rgb(226, 20, 20)"});
+          $(this).css({
+            background: "linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"
+          });
+          $(this).css({ border: "2px solid rgb(226, 20, 20)" });
           wrong++;
-          timer = 11;
+          $(".timer").hide();
+          
+          setTimeout(function() {
+            timer = 12;
+            // $(".timer").hide();
+            $(".questions").empty();
+            $(".questions").append("<div class='options answer'>" + hardQuestions[index].answer  + "</div>")
+  
+          }, 2000);
         }
+       
+        //Delay switching to next question after selecting an option =====================================
         setTimeout(function() {
-          timer = 11;
+          timer = 10;
+          $(".timer").show();
           index++;
 
           if (index < hardQuestions.length) {
+            $(".current").empty();
             $(".questions").empty();
-            $(".questions").append(
+            $(".current").append(
               "<h1 class='question'>" +
-                hardQuestions[index].question +
+              hardQuestions[index].question +
                 "</h1> <br>"
             );
             for (var i = 0; i < hardQuestions[index].options.length; i++) {
               $(".questions").append(
                 "<div class='options' info='" +
-                  hardQuestions[index].options[i] +
+                hardQuestions[index].options[i] +
                   "'>" +
                   hardQuestions[index].options[i] +
                   "</div> <br>"
@@ -621,9 +668,7 @@ $( document ).ready(function() {
           } 
           else {
             $(".timer").hide();
-            $(".counter")
-              .hide()
-              .height(0);
+            $(".counter").hide().height(0);
             clearInterval(timeLeft);
             endGame();
           }
@@ -632,14 +677,16 @@ $( document ).ready(function() {
           $(".options").mouseenter(function() {
             hover.play();
           });
-        }, 1000);
+        }, 4000);
       });
-    }
+    };
 
     function nerd() {
       $(".questions").show();
+      $(".current").show();
       $(".timer").show();
       index = 0;
+      timer = 10;
 
       var nerdQuestions = [
         {
@@ -699,12 +746,12 @@ $( document ).ready(function() {
         }
       ];
 
-      $(".questions").append("<h1 class='question'>" + nerdQuestions[index].question + "</h1> <br>");
+      $(".current").append("<h1 class='question'>" + nerdQuestions[index].question + "</h1> <br>");
 
       for (var i = 0; i < nerdQuestions[index].options.length; i++) {
         $(".questions").append(
           "<div class='options' info='" +
-            nerdQuestions[index].options[i] +
+          nerdQuestions[index].options[i] +
             "'>" +
             nerdQuestions[index].options[i] +
             "</div> <br>"
@@ -720,79 +767,96 @@ $( document ).ready(function() {
       var timeLeft = setInterval(function() {
         timer--;
         $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
-
+        
         if (timer == 0) {
+          timer++;
           wrong++;
-          index++;
-          timer = 10;
-          $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
-
-          if (index < nerdQuestions.length) {
+          $(".timer").hide();
+          $(".questions").empty();
+          $(".questions").append("<div class='options answer'>" + nerdQuestions[index].answer  + "</div>")
+          timer = 12
+          setTimeout(function() {
+            index++;
+            $(".current").empty();
             $(".questions").empty();
-            $(".questions").append(
-              "<h1 class='question'>" +
-                nerdQuestions[index].question +
-                "</h1> <br>"
-            );
-            for (var i = 0; i < nerdQuestions[index].options.length; i++) {
-              $(".questions").append(
-                "<div class='options' info='" +
+            timer--;
+            timer = 11;
+            if (index < nerdQuestions.length) {
+            $(".timer").show();
+              $(".current").append("<h1 class='question'>" + nerdQuestions[index].question + "</h1> <br>");
+              for (var i = 0; i < nerdQuestions[index].options.length; i++) {
+                $(".questions").append(
+                  "<div class='options' info='" +
                   nerdQuestions[index].options[i] +
-                  "'>" +
-                  nerdQuestions[index].options[i] +
-                  "</div> <br>"
-              );
+                    "'>" +
+                    nerdQuestions[index].options[i] +
+                    "</div> <br>");
+              }
+            } 
+            else {
+              $(".timer").hide();
+              $(".counter")
+                .empty()
+                .height(0);
+              clearInterval(timeLeft);
+              endGame();
             }
-          } 
-          else {
-            $(".timer").hide();
-            $(".counter")
-              .empty()
-              .height(0);
-            clearInterval(timeLeft);
-            endGame();
-          }
-          var hover = new Audio();
-          hover.src = "./assets/sounds/hover.wav";
-          $(".options").mouseenter(function() {
-            hover.play();
-          });
+            var hover = new Audio();
+            hover.src = "./assets/sounds/hover.wav";
+            $(".options").mouseenter(function() {
+              hover.play();
+            });
+          },2000);
         }
       }, 1000);
-     
+      
+      //Option on click correct/wrong logic ================================================================
       $(document).on("click", ".options", function() {
         var choosenOption = $(this).attr("info");
         if (choosenOption == nerdQuestions[index].answer) {
           $(this).css({
             background: "linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"
           });
-          $(this).css({border: "2px solid rgb(30, 170, 72)"});
+          $(this).css({ border: "2px solid rgb(30, 170, 72)" });
           correct++;
-          timer = 11;
+          $(".timer").hide();
+          timer = 14;
         } 
         else {
           $(this).css({
             background: "linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"
           });
-          $(this).css({border: "2px solid rgb(226, 20, 20)"});
+          $(this).css({ border: "2px solid rgb(226, 20, 20)" });
           wrong++;
-          timer = 11;
+          $(".timer").hide();
+          
+          setTimeout(function() {
+            timer = 12;
+            // $(".timer").hide();
+            $(".questions").empty();
+            $(".questions").append("<div class='options answer'>" + nerdQuestions[index].answer  + "</div>")
+  
+          }, 2000);
         }
+       
+        //Delay switching to next question after selecting an option =====================================
         setTimeout(function() {
-          timer = 11;
+          timer = 10;
+          $(".timer").show();
           index++;
 
           if (index < nerdQuestions.length) {
+            $(".current").empty();
             $(".questions").empty();
-            $(".questions").append(
+            $(".current").append(
               "<h1 class='question'>" +
-                nerdQuestions[index].question +
+              nerdQuestions[index].question +
                 "</h1> <br>"
             );
             for (var i = 0; i < nerdQuestions[index].options.length; i++) {
               $(".questions").append(
                 "<div class='options' info='" +
-                  nerdQuestions[index].options[i] +
+                nerdQuestions[index].options[i] +
                   "'>" +
                   nerdQuestions[index].options[i] +
                   "</div> <br>"
@@ -810,10 +874,10 @@ $( document ).ready(function() {
           $(".options").mouseenter(function() {
             hover.play();
           });
-        }, 1000);
+        }, 4000);
       });
-    }
-  }
+    };
+  };
 
   difficulty();
 });

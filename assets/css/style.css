@@ -24,7 +24,16 @@ body {
   margin-right: auto;
   width: 90%;
   max-width: 400px;
-  height: 200px;
+  height: 75px;
+  text-align: center;
+}
+
+.current {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  max-width: 400px;
+  height: auto;
   text-align: center;
 }
 
@@ -150,6 +159,11 @@ h1.question {
   font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.answer{
+   background: linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34));
+   border: 2px solid rgb(30, 170, 72);
 }
 
 .options:hover {
