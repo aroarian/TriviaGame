@@ -1,14 +1,18 @@
+$( document ).ready(function() {
 //Global Variables ======================================================================================
   var timer = 10;
   var index = 0;
   var correct = 0;
   var wrong = 0;
-  var intervalId;
-
+  
   $(".correct").hide();
   $(".wrong").hide();
   $(".reset").hide();
   $(".questions").hide();
+
+  $(".reset").on("click", function(){
+    difficulty();
+  })
 
 //Sound for Reset Button ================================================================================  
   var hover = new Audio();
@@ -18,25 +22,30 @@
   });
 
 //Reset Functions =======================================================================================
-  function reset() {
-    location.reload();
-  };
+  // function reset() {
+  //   difficulty();
+  // };
   
   function endGame() {
     $(".questions")
       .empty()
       .height(0);
+      $(".results").show();
     $(".reset").show();
+    $(".difficulty").empty();
     $(".correct").show().html("Correct Answers: " + correct);
     $(".wrong").show().html("Wrong Answers: " + wrong);
   };
 
 //Game Start ============================================================================================
   function difficulty() {
+    $(".questions").hide();
     $(".correct").hide();
     $(".wrong").hide();
     $(".reset").hide();
     $(".timer").hide();
+    $(".results").hide();
+
 
     var difficultyLevel = ["Apprentice", "Knight", "Master", "Nerd"];
 
@@ -155,11 +164,7 @@
 
       for (var i = 0; i < easyQuestions[index].options.length; i++) {
         $(".questions").append(
-          "<div class='options' info='" +
-            easyQuestions[index].options[i] +
-            "'>" +
-            easyQuestions[index].options[i] +
-            "</div> <br>"
+          "<div class='options' info='" + easyQuestions[index].options[i] + "'>" + easyQuestions[index].options[i] + "</div> <br>"
         );
       }
 
@@ -179,6 +184,8 @@
           index++;
           timer = 10;
           $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
+
+         console.log(easyQuestions[index].answer)
       
           if (index < easyQuestions.length) {
             $(".questions").empty();
@@ -809,4 +816,4 @@
   }
 
   difficulty();
-
+});
