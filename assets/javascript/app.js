@@ -1,5 +1,3 @@
-$(document).ready(function() {
-
 //Global Variables ======================================================================================
   var timer = 10;
   var index = 0;
@@ -22,7 +20,7 @@ $(document).ready(function() {
 //Reset Functions =======================================================================================
   function reset() {
     location.reload();
-  }
+  };
   
   function endGame() {
     $(".questions")
@@ -31,7 +29,7 @@ $(document).ready(function() {
     $(".reset").show();
     $(".correct").show().html("Correct Answers: " + correct);
     $(".wrong").show().html("Wrong Answers: " + wrong);
-  }
+  };
 
 //Game Start ============================================================================================
   function difficulty() {
@@ -813,4 +811,4 @@ $(document).ready(function() {
   }
 
   difficulty();
-});
+
