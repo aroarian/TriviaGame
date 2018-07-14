@@ -474,7 +474,7 @@ function master(){
     ]
     $(".questions").append("<h1 class='question'>" + hardQuestions[index].question + "</h1> <br>")
     
-    for(var i = 0; i < mediumQuestions[index].options.length; i++){
+    for(var i = 0; i < hardQuestions[index].options.length; i++){
         $(".questions").append("<div class='options' info='"+ hardQuestions[index].options[i] +"'>" + hardQuestions[index].options[i] + "</div> <br>")
     }
 
