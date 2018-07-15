@@ -43,6 +43,8 @@ $( document ).ready(function() {
     $(".timer").hide();
     $(".results").hide();
 
+    correct = 0;
+    wrong = 0;
 
     var difficultyLevel = ["Apprentice", "Knight", "Master", "Nerd"];
 
