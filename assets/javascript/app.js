@@ -5,7 +5,7 @@ $(document).ready(function() {
   var index = 0;
   var correct = 0;
   var wrong = 0;
-
+  
   $(".correct").hide();
   $(".wrong").hide();
   $(".reset").hide();
