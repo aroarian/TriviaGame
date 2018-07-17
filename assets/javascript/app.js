@@ -1,6 +1,7 @@
 $( document ).ready(function() {
 
 //Global Variables ======================================================================================
+  var stopTimer = false;
   var timer = 10;
   var index = 0;
   var correct = 0;
@@ -106,6 +107,7 @@ $( document ).ready(function() {
       $(".timer").show();
       timer = 10;
       index = 0;
+      
         
       var easyQuestions = [
         {
@@ -177,27 +179,28 @@ $( document ).ready(function() {
 
     //Timer and timer logic for each question ===========================================================
       var timeLeft = setInterval(function() {
+        if (stopTimer) return;
+
         timer--;
         $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
-
-        if (!stopTimer){
-          return;
-        }
-        
+                
         if (timer == 0) {
+          stopTimer = true;
           timer++;
           wrong++;
           $(".timer").hide();
           $(".questions").empty();
           $(".questions").append("<div class='options answer'>" + easyQuestions[index].answer  + "</div>")
-          timer = 12
+         
           setTimeout(function() {
             index++;
             $(".current").empty();
             $(".questions").empty();
-            timer--;
-            timer = 11;
+            timer = 10;
+            $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
+            
             if (index < easyQuestions.length) {
+              stopTimer = false;
             $(".timer").show();
               $(".current").append("<h1 class='question'>" + easyQuestions[index].question + "</h1> <br>");
               for (var i = 0; i < easyQuestions[index].options.length; i++) {
