@@ -164,7 +164,43 @@ h1.question {
 .answer{
    background: linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34));
    border: 2px solid rgb(30, 170, 72);
+   width: 90%;
+   border-radius: 10px;
+   padding: 15px;
+   font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+   font-weight: bold;
+   text-transform: uppercase;
 }
+
+.incorrect{
+  background: linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34));
+  border: 2px solid rgb(30, 170, 72);
+  width: 90%;
+  border-radius: 10px;
+  padding: 15px;
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.noclick {
+  background-color: rgba(5, 47, 77);
+  border: 1px solid rgba(5, 47, 77);
+  width: 90%;
+  border-radius: 10px;
+  padding: 15px;
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.noclick:hover {
+  background: linear-gradient(rgba(5, 47, 77), rgb(2, 21, 34));
+  border: 2px solid #ffc107;
+  color: #ffc107;
+}
+
+
 
 .options:hover {
   background: linear-gradient(rgba(5, 47, 77), rgb(2, 21, 34));

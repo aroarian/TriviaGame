@@ -100,6 +100,18 @@ $( document ).ready(function() {
       nerd();
     });
 
+    $(".answer").on("click", function(){
+      return;
+    });
+
+    $(".incorrect").on("click", function(){
+      return;
+    });
+
+    $(".noclick").on("click", function(){
+      return;
+    });
+
 //Difficulty functions and questions ============================================================================
     function apprentice() {
       $(".questions").show();
@@ -190,7 +202,9 @@ $( document ).ready(function() {
           wrong++;
           $(".timer").hide();
           $(".questions").empty();
-          $(".questions").append("<div class='options answer'>" + easyQuestions[index].answer  + "</div>")
+          $(".questions").append("<div class='answer'>" + easyQuestions[index].answer  + "</div>")
+
+          
          
           setTimeout(function() {
             index++;
@@ -229,29 +243,27 @@ $( document ).ready(function() {
       //Option on click correct/wrong logic ================================================================
       $(document).on("click", ".options", function() {
         var choosenOption = $(this).attr("info");
+       
         if (choosenOption == easyQuestions[index].answer) {
           stopTimer = true;
-          $(this).css({
-            background: "linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"
-          });
-          $(this).css({ border: "2px solid rgb(30, 170, 72)" });
-          
+          $(".options").addClass("noclick").removeClass("options")
+          $(this).css({background: "linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"});
+          $(this).css({border: "2px solid rgb(30, 170, 72)"});
           correct++;
           $(".timer").hide();
-          
         } 
         else {
           stopTimer = true;
-          $(this).css({
-            background: "linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"
-          });
+          $(this).css({background: "linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"});
           $(this).css({ border: "2px solid rgb(226, 20, 20)" });
-          wrong++;
+          $(this).addClass("incorrect").removeClass("options");
+          $(".options").addClass("noclick").removeClass("options")
+           wrong++;
           $(".timer").hide();
           
           setTimeout(function() {
             $(".questions").empty();
-            $(".questions").append("<div class='options answer'>" + easyQuestions[index].answer  + "</div>")
+            $(".questions").append("<div class='answer'>" + easyQuestions[index].answer  + "</div>")
   
           }, 1500);
         }
@@ -386,7 +398,9 @@ $( document ).ready(function() {
           wrong++;
           $(".timer").hide();
           $(".questions").empty();
-          $(".questions").append("<div class='options answer'>" + mediumQuestions[index].answer  + "</div>")
+          $(".questions").append("<div class='answer'>" + mediumQuestions[index].answer  + "</div>")
+
+          
          
           setTimeout(function() {
             index++;
@@ -425,29 +439,27 @@ $( document ).ready(function() {
       //Option on click correct/wrong logic ================================================================
       $(document).on("click", ".options", function() {
         var choosenOption = $(this).attr("info");
+       
         if (choosenOption == mediumQuestions[index].answer) {
           stopTimer = true;
-          $(this).css({
-            background: "linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"
-          });
-          $(this).css({ border: "2px solid rgb(30, 170, 72)" });
-          
+          $(".options").addClass("noclick").removeClass("options")
+          $(this).css({background: "linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"});
+          $(this).css({border: "2px solid rgb(30, 170, 72)"});
           correct++;
           $(".timer").hide();
-          
         } 
         else {
           stopTimer = true;
-          $(this).css({
-            background: "linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"
-          });
+          $(this).css({background: "linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"});
           $(this).css({ border: "2px solid rgb(226, 20, 20)" });
-          wrong++;
+          $(this).addClass("incorrect").removeClass("options");
+          $(".options").addClass("noclick").removeClass("options")
+           wrong++;
           $(".timer").hide();
           
           setTimeout(function() {
             $(".questions").empty();
-            $(".questions").append("<div class='options answer'>" + mediumQuestions[index].answer  + "</div>")
+            $(".questions").append("<div class='answer'>" + mediumQuestions[index].answer  + "</div>")
   
           }, 1500);
         }
@@ -464,10 +476,7 @@ $( document ).ready(function() {
             $(".current").empty();
             $(".questions").empty();
             $(".current").append(
-              "<h1 class='question'>" +
-              mediumQuestions[index].question +
-                "</h1> <br>"
-            );
+              "<h1 class='question'>" + mediumQuestions[index].question + "</h1> <br>");
             for (var i = 0; i < mediumQuestions[index].options.length; i++) {
               $(".questions").append(
                 "<div class='options' info='" +
@@ -595,7 +604,9 @@ $( document ).ready(function() {
           wrong++;
           $(".timer").hide();
           $(".questions").empty();
-          $(".questions").append("<div class='options answer'>" + hardQuestions[index].answer  + "</div>")
+          $(".questions").append("<div class='answer'>" + hardQuestions[index].answer  + "</div>")
+
+          
          
           setTimeout(function() {
             index++;
@@ -634,29 +645,27 @@ $( document ).ready(function() {
       //Option on click correct/wrong logic ================================================================
       $(document).on("click", ".options", function() {
         var choosenOption = $(this).attr("info");
+       
         if (choosenOption == hardQuestions[index].answer) {
           stopTimer = true;
-          $(this).css({
-            background: "linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"
-          });
-          $(this).css({ border: "2px solid rgb(30, 170, 72)" });
-          
+          $(".options").addClass("noclick").removeClass("options")
+          $(this).css({background: "linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"});
+          $(this).css({border: "2px solid rgb(30, 170, 72)"});
           correct++;
           $(".timer").hide();
-          
         } 
         else {
           stopTimer = true;
-          $(this).css({
-            background: "linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"
-          });
+          $(this).css({background: "linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"});
           $(this).css({ border: "2px solid rgb(226, 20, 20)" });
-          wrong++;
+          $(this).addClass("incorrect").removeClass("options");
+          $(".options").addClass("noclick").removeClass("options")
+           wrong++;
           $(".timer").hide();
           
           setTimeout(function() {
             $(".questions").empty();
-            $(".questions").append("<div class='options answer'>" + hardQuestions[index].answer  + "</div>")
+            $(".questions").append("<div class='answer'>" + hardQuestions[index].answer  + "</div>")
   
           }, 1500);
         }
@@ -673,10 +682,7 @@ $( document ).ready(function() {
             $(".current").empty();
             $(".questions").empty();
             $(".current").append(
-              "<h1 class='question'>" +
-              hardQuestions[index].question +
-                "</h1> <br>"
-            );
+              "<h1 class='question'>" + hardQuestions[index].question + "</h1> <br>");
             for (var i = 0; i < hardQuestions[index].options.length; i++) {
               $(".questions").append(
                 "<div class='options' info='" +
@@ -796,7 +802,9 @@ $( document ).ready(function() {
           wrong++;
           $(".timer").hide();
           $(".questions").empty();
-          $(".questions").append("<div class='options answer'>" + nerdQuestions[index].answer  + "</div>")
+          $(".questions").append("<div class='answer'>" + nerdQuestions[index].answer  + "</div>")
+
+          
          
           setTimeout(function() {
             index++;
@@ -835,29 +843,27 @@ $( document ).ready(function() {
       //Option on click correct/wrong logic ================================================================
       $(document).on("click", ".options", function() {
         var choosenOption = $(this).attr("info");
+       
         if (choosenOption == nerdQuestions[index].answer) {
           stopTimer = true;
-          $(this).css({
-            background: "linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"
-          });
-          $(this).css({ border: "2px solid rgb(30, 170, 72)" });
-          
+          $(".options").addClass("noclick").removeClass("options")
+          $(this).css({background: "linear-gradient(rgb(8, 109, 38), rgb(2, 21, 34))"});
+          $(this).css({border: "2px solid rgb(30, 170, 72)"});
           correct++;
           $(".timer").hide();
-          
         } 
         else {
           stopTimer = true;
-          $(this).css({
-            background: "linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"
-          });
+          $(this).css({background: "linear-gradient(rgb(122, 11, 11), rgb(2, 21, 34))"});
           $(this).css({ border: "2px solid rgb(226, 20, 20)" });
-          wrong++;
+          $(this).addClass("incorrect").removeClass("options");
+          $(".options").addClass("noclick").removeClass("options")
+           wrong++;
           $(".timer").hide();
           
           setTimeout(function() {
             $(".questions").empty();
-            $(".questions").append("<div class='options answer'>" + nerdQuestions[index].answer  + "</div>")
+            $(".questions").append("<div class='answer'>" + nerdQuestions[index].answer  + "</div>")
   
           }, 1500);
         }
@@ -874,10 +880,7 @@ $( document ).ready(function() {
             $(".current").empty();
             $(".questions").empty();
             $(".current").append(
-              "<h1 class='question'>" +
-              nerdQuestions[index].question +
-                "</h1> <br>"
-            );
+              "<h1 class='question'>" + nerdQuestions[index].question + "</h1> <br>");
             for (var i = 0; i < nerdQuestions[index].options.length; i++) {
               $(".questions").append(
                 "<div class='options' info='" +
