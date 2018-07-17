@@ -179,6 +179,10 @@ $( document ).ready(function() {
       var timeLeft = setInterval(function() {
         timer--;
         $(".timer").html("<h2 class='counter'>" + timer + "</h2>");
+
+        if (!stopTimer){
+          return;
+        }
         
         if (timer == 0) {
           timer++;
