@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  //Global Variables ======================================================================================
+//Global Variables ======================================================================================
   var stopTimer = false;
   var timer = 10;
   var index = 0;
@@ -11,19 +11,19 @@ $(document).ready(function() {
   $(".reset").hide();
   $(".questions").hide();
 
-  //Reset Functions =======================================================================================
+//Reset Functions =======================================================================================
   $(".reset").on("click", function() {
     difficulty();
   });
 
-  //Sound for Reset Button ================================================================================
+//Sound for Reset Button ================================================================================
   var hover = new Audio();
   hover.src = "./assets/sounds/hover.wav";
   $(".reset").mouseenter(function() {
     hover.play();
   });
 
-  //Game End =============================================================================================
+//Game End =============================================================================================
   function endGame() {
     $(".questions").empty().height(0);
     $(".current").empty();
@@ -34,7 +34,7 @@ $(document).ready(function() {
     $(".wrong").show().html("Wrong Answers: " + wrong);
   };
 
-  //Game Start ============================================================================================
+//Game Start ============================================================================================
   function difficulty() {
     $(".questions").hide();
     $(".correct").hide();
@@ -58,7 +58,7 @@ $(document).ready(function() {
       hover.play();
     });
 
-    //On Clicks calls difficulty function and plays music ================================================
+//On Clicks calls difficulty function and plays music ====================================================
     $("#Apprentice").on("click", function() {
       var click = new Audio();
       click.src = "./assets/sounds/Music.mp3";
@@ -99,6 +99,7 @@ $(document).ready(function() {
       nerd();
     });
 
+//Logic to stop additional clicks once a user has selected a potential answer =====================================
     $(".answer").on("click", function() {
       return;
     });
@@ -111,7 +112,7 @@ $(document).ready(function() {
       return;
     });
 
-    //Difficulty functions and questions ============================================================================
+//Difficulty functions and questions ============================================================================
     function apprentice() {
       $(".questions").show();
       $(".current").show();
@@ -172,7 +173,7 @@ $(document).ready(function() {
         }
       ];
 
-      //Display Question and Options ================================================================
+//Display Question and Options ======================================================================
       $(".current").append("<h1 class='question'>" + easyQuestions[index].question + "</h1> <br>");
 
       for (var i = 0; i < easyQuestions[index].options.length; i++) {
@@ -191,7 +192,7 @@ $(document).ready(function() {
         hover.play();
       });
 
-      //Timer and timer logic for each question ===========================================================
+//Timer and timer logic for each question ===========================================================
       var timeLeft = setInterval(function() {
         if (stopTimer) return;
 
@@ -242,7 +243,7 @@ $(document).ready(function() {
         }
       }, 1000);
 
-      //Option on click correct/wrong logic ================================================================
+//Option on click correct/wrong logic ================================================================
       $(document).on("click", ".options", function() {
         var choosenOption = $(this).attr("info");
 
@@ -269,7 +270,7 @@ $(document).ready(function() {
           }, 1500);
         };
 
-        //Delay switching to next question after selecting an option =====================================
+//Delay switching to next question after selecting an option =============================================
         setTimeout(function() {
           index++;
 
@@ -433,7 +434,7 @@ $(document).ready(function() {
         };
       }, 1000);
 
-      //Option on click correct/wrong logic ================================================================
+//Option on click correct/wrong logic ================================================================
       $(document).on("click", ".options", function() {
         var choosenOption = $(this).attr("info");
 
@@ -460,7 +461,7 @@ $(document).ready(function() {
           }, 1500);
         };
 
-        //Delay switching to next question after selecting an option =====================================
+//Delay switching to next question after selecting an option =========================================
         setTimeout(function() {
           index++;
 
@@ -643,7 +644,7 @@ $(document).ready(function() {
         };
       }, 1000);
 
-      //Option on click correct/wrong logic ================================================================
+//Option on click correct/wrong logic ================================================================
       $(document).on("click", ".options", function() {
         var choosenOption = $(this).attr("info");
 
@@ -673,7 +674,7 @@ $(document).ready(function() {
           }, 1500);
         }
 
-        //Delay switching to next question after selecting an option =====================================
+//Delay switching to next question after selecting an option ===========================================
         setTimeout(function() {
           index++;
 
@@ -847,7 +848,7 @@ $(document).ready(function() {
         };
       }, 1000);
 
-      //Option on click correct/wrong logic ================================================================
+//Option on click correct/wrong logic ================================================================
       $(document).on("click", ".options", function() {
         var choosenOption = $(this).attr("info");
 
@@ -874,7 +875,7 @@ $(document).ready(function() {
           }, 1500);
         };
 
-        //Delay switching to next question after selecting an option =====================================
+//Delay switching to next question after selecting an option ========================================
         setTimeout(function() {
           index++;
 
