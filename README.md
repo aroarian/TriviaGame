@@ -1,6 +1,6 @@
 # TriviaGame
 
-#https://aroarian.github.io/TriviaGame/
+https://aroarian.github.io/TriviaGame/
 
 When the Trivia Game first loads, click on a lucky star.
 
