@@ -230,7 +230,7 @@ $(document).ready(function() {
             } 
             else {
               $(".timer").hide();
-              stopTimer = false;
+              stopTimer = true;
               endGame();
             };
 
@@ -421,7 +421,7 @@ $(document).ready(function() {
             } 
             else {
               $(".timer").hide();
-              stopTimer = false;
+              stopTimer = true;
               endGame();
             }
 
@@ -631,7 +631,7 @@ $(document).ready(function() {
             } 
             else {
               $(".timer").hide();
-              stopTimer = false;
+              stopTimer = true;
               endGame();
             };
 
@@ -835,7 +835,7 @@ $(document).ready(function() {
             } 
             else {
               $(".timer").hide();
-              stopTimer = false;
+              stopTimer = true;
               endGame();
             };
 
